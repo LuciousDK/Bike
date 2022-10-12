@@ -9,6 +9,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 
 const environment = require('./configuration/environment');
 
@@ -54,7 +55,7 @@ module.exports = {
           },
         },
         generator: {
-          filename: 'images/design/[name].[hash:6][ext]',
+          filename: 'images/[name].[hash:6][ext]',
         },
       },
       {
@@ -66,7 +67,7 @@ module.exports = {
           },
         },
         generator: {
-          filename: 'images/design/[name].[hash:6][ext]',
+          filename: 'fonts/[name].[hash:6][ext]',
         },
       },
     ],
@@ -105,6 +106,21 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'css/[name].css',
+    }),
+    new SVGSpritemapPlugin([path.resolve(environment.paths.source, 'icons/*.svg')], {
+      input: {
+        options: {
+
+        },
+      },
+      styles: {
+        filename: 'src/scss/resources/_icons.scss',
+        format: 'data',
+        keepAttributes: true,
+        variables: {
+          variables: 'color',
+        }
+      }
     }),
     new CleanWebpackPlugin({
       verbose: true,
