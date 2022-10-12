@@ -1,0 +1,27 @@
+{
+	"name": "luat/pepe-bike",
+	"type": "typo3-cms-extension",
+	"version": "1.0.0",
+	"description": "",
+	"homepage": "",
+	"authors": [
+		{
+			"name": "",
+			"role": "Developer"
+		}
+	],
+	"license": "GPL-2.0+",
+	"require": {
+		"typo3/cms-core": "^10.4"
+	},
+	"autoload": {
+		"psr-4": {
+			"Luat\\PepeBike\\": "Classes/"
+		}
+	},
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "pepe_bike"
+		}
+	}
+}

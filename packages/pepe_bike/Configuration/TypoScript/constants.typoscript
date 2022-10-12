@@ -1,0 +1,13 @@
+plugin.tx_pepebike {
+    view {
+        # cat=plugin.tx_search_list/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:pepe_bike/Resources/Private/Templates/
+        # cat=plugin.tx_search_list/file; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:pepe_bike/Resources/Private/Partials/
+        # cat=plugin.tx_search_list/file; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:pepe_bike/Resources/Private/Layouts/
+    }
+    persistence {
+        storagePid =
+    }
+}
