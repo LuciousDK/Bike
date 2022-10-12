@@ -144,7 +144,7 @@ page {
     }
 
     includeCSS {
-        bike_provider_layout = EXT:bike_provider/Resources/Public/Css/layout.min.css
+        bike_provider_layout = EXT:bike_provider/Resources/Public/css/app.css
     }
 
     includeJSLibs {
@@ -160,7 +160,7 @@ page {
     }
 
     includeJSFooter {
-        bike_provider_scripts = EXT:bike_provider/Resources/Public/JavaScript/Dist/scripts.js
+        bike_provider_scripts = EXT:bike_provider/Resources/Public/js/app.js
     }
 }
 

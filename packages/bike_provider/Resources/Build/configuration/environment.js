@@ -6,7 +6,7 @@ module.exports = {
     source: path.resolve(__dirname, '../src/'),
 
     /* Path to built files directory */
-    output: path.resolve(__dirname, '../../Public/Dist/'),
+    output: path.resolve(__dirname, '../../Public/'),
   },
   server: {
     host: 'localhost',
