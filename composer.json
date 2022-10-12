@@ -5,15 +5,27 @@
 	"config": {
 		"allow-plugins": {
 			"typo3/class-alias-loader": true,
-			"typo3/cms-composer-installers": true
+			"typo3/cms-composer-installers": true,
+			"helhum/dotenv-connector": true
 		},
 		"platform": {
-			"php": "7.2"
+			"php": "7.4"
 		},
 		"sort-packages": true
 	},
+	"repositories": {
+		"packages": {
+			"type" : "path",
+			"url" : "packages/*",
+			"options" : {
+				"symlink" : true
+			}
+		}
+	},
 	"require": {
+		"helhum/dotenv-connector": "^3.0",
 		"helhum/typo3-console": "^6.0.0",
+		"luat/bike-provider": "^1.0",
 		"typo3/cms-about": "^10.4.0",
 		"typo3/cms-backend": "^10.4.0",
 		"typo3/cms-belog": "^10.4.0",
