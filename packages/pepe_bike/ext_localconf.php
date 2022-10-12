@@ -7,50 +7,28 @@ $_EXTKEY = 'pepe_bike';
 
 call_user_func(
     function () {
-        
-        // \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-        //     'VdiSearch',
-        //     'Pi1',
-        //     'VDI Search'
-        // );
 
-        // \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-        //     'Cbe.VdiSearch',
-        //     'Pi1',
-        //     array( // An array holding the controller-action-combinations that are accessible
-        //         'Search' => 'index,ajaxsearch', // The first controller and its first action will be the default
-        //     ),
-        //     array( // An array of non-cachable controller-action-combinations (they must already be enabled)
-        //         'Search' => 'index,ajaxsearch',
-        //     )
-        // );
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
+            '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:pepe_bike/Configuration/TsConfig/Page/Mod/Wizards/NewContentElement.tsconfig">'
+        );
 
-        // wizards
-        // \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
-        //     'mod {
-        //         wizards.newContentElement.wizardItems.plugins {
-        //             elements {
-        //                 vdisearch_pi1 {
-        //                     iconIdentifier = vdi_search-plugin
-        //                     title = VDI Search
-        //                     description = Suchmaschine für Inhalte innerhalb der Website und des API-Dienstes
-        //                     tt_content_defValues {
-        //                         CType = list
-        //                         list_type = vdisearch_pi1
-        //                     },
-        //                 }
-        //             }
-        //             show = *
-        //         }
-        //    }'
-        // );
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+            'Luat.PepeBike',
+            'List',
+            array( // An array holding the controller-action-combinations that are accessible
+                'Main' => 'list', // The first controller and its first action will be the default
+            ),
+            array( // An array of non-cachable controller-action-combinations (they must already be enabled)
+                'Main' => 'list',
+            )
+        );
 
-        // $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
+        $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
 
-        // $iconRegistry->registerIcon(
-        //     'vdi_search-plugin',
-        //     \TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider::class,
-        //     ['source' => 'EXT:vdi_search/Resources/Public/Icons/vdipage.gif']
-        // );
+        $iconRegistry->registerIcon(
+            'pepe-bike',
+            \TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider::class,
+            ['source' => 'EXT:pepe_bike/Resources/Public/Icons/Extension.gif']
+        );
     }
 );
