@@ -1,5 +1,4 @@
 base: '%env("PROJECT_BASE_URL")%'
-errorHandling: {  }
 languages:
   -
     title: English
@@ -13,5 +12,6 @@ languages:
     hreflang: en-us
     direction: ltr
     flag: us
+    websiteTitle: ''
 rootPageId: 1
-routes: {  }
+websiteTitle: ''
