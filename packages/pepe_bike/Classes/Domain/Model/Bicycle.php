@@ -1,5 +1,8 @@
 <?php
 declare (strict_types = 1);
+
+namespace Luat\PepeBike\Domain\Model;
+
 use \TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 class Bicycle extends AbstractEntity
