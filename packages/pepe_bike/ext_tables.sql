@@ -17,6 +17,7 @@ CREATE TABLE tx_pepebike_domain_model_bicycle (
   model varchar(255) DEFAULT '' NOT NULL,
   wheels int(11) DEFAULT '2' NOT NULL,
   brand int(11) DEFAULT NULL,
+  categories int(11) NOT NULL DEFAULT 0,
 
 
   PRIMARY KEY (uid),

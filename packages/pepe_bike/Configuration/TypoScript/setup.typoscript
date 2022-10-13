@@ -2,15 +2,15 @@ plugin.tx_pepebike {
     view {
         templateRootPaths {
             0 = EXT:pepe_bike/Resources/Private/Templates/
-            1 = {$plugin.tx_pepebike.view.templateRootPaths}
+            1 = {$plugin.tx_pepebike.view.templateRootPath}
         }
         partialRootPaths {
             0 = EXT:pepe_bike/Resources/Private/Partials/
-            1 = {$plugin.tx_pepebike.view.partialRootPaths}
+            1 = {$plugin.tx_pepebike.view.partialRootPath}
         }
         layoutRootPaths {
             0 = EXT:pepe_bike/Resources/Private/Layouts/
-            1 = {$plugin.tx_pepebike.view.layoutRootPaths}
+            1 = {$plugin.tx_pepebike.view.layoutRootPath}
         }
     }
     persistence {
