@@ -11,8 +11,6 @@ return [
     'ctrl' => [
         'title' => 'Bicycle',
         'label' => 'model',
-        'label_alt' => 'crdate',
-        'label_alt_force' => 1,
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -60,7 +58,8 @@ return [
                 'allowed' => 'tx_pepebike_domain_model_brand',
                 'size' => 1,
                 'maxitems' => 1,
-                'minitems' => '0',
+                'minitems' => 0,
+                'default' => null,
                 'fieldWizard' => [
                     'recordsOverview' => [
                         'disabled' => true

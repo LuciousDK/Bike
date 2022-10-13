@@ -1,7 +1,7 @@
 #
-# Table structure for table 'tx_pepebike_domain_model_biclycle'
+# Table structure for table 'tx_pepebike_domain_model_bicycle'
 #
-CREATE TABLE tx_pepebike_domain_model_biclycle (
+CREATE TABLE tx_pepebike_domain_model_bicycle (
 
   uid int(11) NOT NULL auto_increment,
   pid int(11) DEFAULT '0' NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE tx_pepebike_domain_model_biclycle (
   color varchar(255) DEFAULT '' NOT NULL,
   model varchar(255) DEFAULT '' NOT NULL,
   wheels int(11) DEFAULT '2' NOT NULL,
-  brand int(11) DEFAULT '0' NOT NULL,
+  brand int(11) DEFAULT NULL,
 
 
   PRIMARY KEY (uid),

@@ -11,8 +11,6 @@ return [
     'ctrl' => [
         'title' => 'Brand',
         'label' => 'name',
-        'label_alt' => 'crdate',
-        'label_alt_force' => 1,
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -53,7 +51,7 @@ return [
             ],
         ],
         'name' => [
-            'label' => 'Model',
+            'label' => 'Name',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
