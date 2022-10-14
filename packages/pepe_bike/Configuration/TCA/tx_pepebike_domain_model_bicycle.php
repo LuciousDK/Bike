@@ -40,16 +40,15 @@ return [
         ],
         'hidden' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:pages.hidden_toggle',
+            'label' => 'Hidden',
             'config' => [
                 'type' => 'check',
                 'renderType' => 'checkboxToggle',
-                'default' => 1,
+                'default' => 0,
                 'items' => [
                     [
                         0 => '',
                         1 => '',
-                        'invertStateDisplay' => true
                     ]
                 ],
             ]
