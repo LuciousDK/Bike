@@ -20,34 +20,22 @@ class MainController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
 
     /**
+     * @var PropertyMapper
+     * @TYPO3\CMS\Extbase\Annotation\Inject
+     */
+    public $propertyMapper;
+
+    /**
      * @var BicycleRepository
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $bicycleRepository;
 
     /**
-     * Inject a bicycle repository
-     *
-     * @param BicycleRepository $bicycleRepository
-     */
-    public function injectBicycleRepository(BicycleRepository $bicycleRepository)
-    {
-        $this->bicycleRepository = $bicycleRepository;
-    }
-
-    /**
      * @var BrandRepository
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $brandRepository;
-
-    /**
-     * Inject a brand repository
-     *
-     * @param BrandRepository $brandRepository
-     */
-    public function injectBrandRepository(BrandRepository $brandRepository)
-    {
-        $this->brandRepository = $brandRepository;
-    }
 
     /**
      * Init the actions
@@ -85,7 +73,7 @@ class MainController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         if ($this->request->hasArgument('newBicycle')) {
             $newBicycle = $this->request->getArgument('newBicycle');
-            GeneralUtility::makeInstance(PropertyMapper::class)->convert(
+            $this->propertyMapper->convert(
                 $newBicycle,
                 Bicycle::class
             );
@@ -111,7 +99,7 @@ class MainController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         if ($this->request->hasArgument('bicycle')) {
             $bicycle = $this->request->getArgument('bicycle');
-            GeneralUtility::makeInstance(PropertyMapper::class)->convert(
+            $this->propertyMapper->convert(
                 $bicycle,
                 Bicycle::class
             );
