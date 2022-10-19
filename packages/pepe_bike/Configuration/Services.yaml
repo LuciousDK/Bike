@@ -1,0 +1,8 @@
+services:
+  Luat\PepeBike\Command\SendEmailCommand:
+    tags:
+      - name: 'console.command'
+        command: 'pepe_bike:send_email'
+        description: 'Sends Email'
+        schedulable: true
+        hidden: false

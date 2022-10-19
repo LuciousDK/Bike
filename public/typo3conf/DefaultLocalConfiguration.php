@@ -119,5 +119,6 @@ return [
         'systemMaintainers' => [
             1,
         ],
+        'phpTimeZone' => 'Europe/Berlin'
     ],
 ];
