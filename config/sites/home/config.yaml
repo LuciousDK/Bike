@@ -6,12 +6,12 @@ languages:
     languageId: 0
     base: /
     typo3Language: default
-    locale: en_US.UTF-8
-    iso-639-1: en
+    locale: de_DE.UTF-8
+    iso-639-1: de
     navigationTitle: English
-    hreflang: en-us
+    hreflang: de-de
     direction: ltr
-    flag: us
+    flag: de
     websiteTitle: ''
 rootPageId: 1
 websiteTitle: ''
