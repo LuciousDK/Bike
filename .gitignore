@@ -10,5 +10,6 @@ nbproject
 /public/typo3conf/*
 !/public/typo3conf/DefaultLocalConfiguration.php
 !/public/typo3conf/AdditionalConfiguration.php
+db
 .env
 packages/bike_provider/Resources/Build/node_modules
