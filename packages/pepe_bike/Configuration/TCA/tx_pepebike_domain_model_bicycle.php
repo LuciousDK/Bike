@@ -2,7 +2,7 @@
 
 return [
     'ctrl' => [
-        'title' => 'Bicycle',
+        'title' => 'LLL:EXT:pepebike/Resources/Private/Language/locallang_be.xlf:extension.bicycle',
         'label' => 'model',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',

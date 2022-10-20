@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-06-02T11:47:18Z" product-name="pepebike">
+		<header/>
+		<body>
+			<trans-unit id="extension.title">
+				<source>Pepe Bike</source>
+			</trans-unit>
+			<trans-unit id="extension.bicycle">
+				<source>Bicycle</source>
+			</trans-unit>
+			<trans-unit id="extension.brand">
+				<source>Brand</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
