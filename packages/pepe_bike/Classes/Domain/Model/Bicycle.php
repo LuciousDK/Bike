@@ -4,6 +4,7 @@ declare (strict_types = 1);
 namespace Luat\PepeBike\Domain\Model;
 
 use \TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 class Bicycle extends AbstractEntity
 {
@@ -48,6 +49,12 @@ class Bicycle extends AbstractEntity
      * @var string
      */
     protected $model;
+
+    /**
+     * @var ObjectStorage<Client>
+     */
+    protected $clients;
+
 
     /**
      * Get the value of model
@@ -307,6 +314,58 @@ class Bicycle extends AbstractEntity
         if ($this->endtime) {
             return (int) $this->endtime->format('d');
         }
+    }
+
+    /**
+     * Get $clients
+     *
+     * @return  ObjectStorage<Client>
+     */ 
+    public function getClients(): ObjectStorage
+    {
+        return $this->clients;
+    }
+
+    /**
+     * Set $clients
+     *
+     * @param  ObjectStorage<Client>  $clients 
+     *
+     * @return  self
+     */ 
+    public function setClients(ObjectStorage $clients): Bicycle
+    {
+        $this->clients = $clients;
+
+        return $this;
+    }
+
+    /**
+     * Add a client to this brand
+     *
+     * @param  Client  $client
+     *
+     * @return  self
+     */ 
+    public function addClient(Client $client): Bicycle
+    {
+        $this->clients->attach($client);
+
+        return $this;
+    }
+
+    /**
+     * Remove a client to this brand
+     *
+     * @param  Client  $client
+     *
+     * @return  self
+     */ 
+    public function removeClient(Client $client): Bicycle
+    {
+        $this->clients->detach($client);
+
+        return $this;
     }
 
 }

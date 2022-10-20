@@ -9,7 +9,7 @@ use TYPO3\CMS\Extbase\Annotation as Extbase;
 use Luat\PepeBike\Domain\Model\Bicycle;
 use Luat\PepeBike\Domain\Repository\BicycleRepository;
 use Luat\PepeBike\Domain\Repository\BrandRepository;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Luat\PepeBike\Domain\Repository\ClientRepository;
 use TYPO3\CMS\Extbase\Property\PropertyMapper;
 
 /**
@@ -38,6 +38,12 @@ class MainController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     protected $brandRepository;
 
     /**
+     * @var ClientRepository
+     * @TYPO3\CMS\Extbase\Annotation\Inject
+     */
+    protected $clientRepository;
+
+    /**
      * Init the actions
      */
     public function initializeAction()
@@ -62,6 +68,7 @@ class MainController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         $this->view->assign('bicycles', $this->bicycleRepository->findAll());
         $this->view->assign('brand', $this->brandRepository->findAll());
+        $this->view->assign('clients', $this->clientRepository->findAll());
     }
 
 
