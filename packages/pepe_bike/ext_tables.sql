@@ -17,6 +17,7 @@ CREATE TABLE tx_pepebike_domain_model_bicycle (
   wheels int(11) DEFAULT '2' NOT NULL,
   brand int(11) DEFAULT NULL,
   categories int(11) NOT NULL DEFAULT 0,
+	clients text,
   PRIMARY KEY (uid),
   KEY parent (pid)
 );
@@ -48,4 +49,11 @@ CREATE TABLE tx_pepebike_feuser_bicycle_mm (
   sorting_foreign int(11) unsigned DEFAULT '0' NOT NULL,
   KEY uid_local (uid_local),
   KEY uid_foreign (uid_foreign)
+);
+
+#
+# Add field 'tx_pepebike_bicycles' to table 'fe_users'
+#
+CREATE TABLE fe_users (
+	tx_pepebike_bicycles text
 );

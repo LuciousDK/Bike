@@ -15,7 +15,7 @@ return [
             'endtime' => 'endtime',
         ],
         'typeicon_classes' => [
-            'default' => 'pepe-bike'
+            'default' => 'pepe-bike',
         ],
         'searchFields' => 'uid,brand,model,color',
     ],
@@ -49,9 +49,9 @@ return [
                     [
                         0 => '',
                         1 => '',
-                    ]
+                    ],
                 ],
-            ]
+            ],
         ],
         'starttime' => [
             'exclude' => true,
@@ -92,9 +92,9 @@ return [
                 'default' => null,
                 'fieldWizard' => [
                     'recordsOverview' => [
-                        'disabled' => true
-                    ]
-                ]
+                        'disabled' => true,
+                    ],
+                ],
             ],
         ],
         'model' => [
@@ -122,20 +122,30 @@ return [
                 'default' => 2,
             ],
         ],
+        'clients' => [
+            'label' => 'Clients',
+            'config' => [
+                'type' => 'group',
+                'size' => 5,
+                'internal_type' => 'db',
+                'allowed' => 'fe_users',
+                'foreign_table' => 'fe_users',
+                'MM' => 'tx_pepebike_feuser_bicycle_mm',
+                'maxitems' => 1000,
+            ],
+        ],
     ],
     'types' => [
         0 => [
-            'showitem' => '
-                    --palette--;;paletteBrand,--palette--;;paletteCore,
+            'showitem' => 
+                    'brand,clients,
+                    --palette--;;paletteCore,
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
                     --palette--;;paletteHidden,
                     --palette--;;paletteAccess,',
         ],
     ],
     'palettes' => [
-        'paletteBrand' => [
-            'showitem' => 'brand',
-        ],
         'paletteCore' => [
             'showitem' => 'model,color,wheels',
         ],

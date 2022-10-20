@@ -7,5 +7,5 @@ plugin.tx_pepebike {
         # cat=plugin.tx_search_list/file; type=string; label=Path to template layouts (FE)
         layoutRootPath = EXT:pepebike/Resources/Private/Layouts/
     }
-    settings.storagePid = 1,2
+    settings.storagePid = 1,2,4
 }
