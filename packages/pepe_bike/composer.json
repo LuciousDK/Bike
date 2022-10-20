@@ -1,5 +1,5 @@
 {
-	"name": "luat/pepe-bike",
+	"name": "luat/pepebike",
 	"type": "typo3-cms-extension",
 	"version": "1.0.0",
 	"description": "",
@@ -21,7 +21,7 @@
 	},
 	"extra": {
 		"typo3/cms": {
-			"extension-key": "pepe_bike"
+			"extension-key": "pepebike"
 		}
 	}
 }

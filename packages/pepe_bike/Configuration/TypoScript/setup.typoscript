@@ -1,15 +1,15 @@
 plugin.tx_pepebike {
     view {
         templateRootPaths {
-            0 = EXT:pepe_bike/Resources/Private/Templates/
+            0 = EXT:pepebike/Resources/Private/Templates/
             1 = {$plugin.tx_pepebike.view.templateRootPath}
         }
         partialRootPaths {
-            0 = EXT:pepe_bike/Resources/Private/Partials/
+            0 = EXT:pepebike/Resources/Private/Partials/
             1 = {$plugin.tx_pepebike.view.partialRootPath}
         }
         layoutRootPaths {
-            0 = EXT:pepe_bike/Resources/Private/Layouts/
+            0 = EXT:pepebike/Resources/Private/Layouts/
             1 = {$plugin.tx_pepebike.view.layoutRootPath}
         }
     }

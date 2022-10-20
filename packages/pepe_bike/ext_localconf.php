@@ -3,10 +3,10 @@ if (!defined('TYPO3_MODE')) {
     die('Access denied.');
 }
 
-$_EXTKEY = 'pepe_bike';
+$_EXTKEY = 'pepebike';
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
-    '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:pepe_bike/Configuration/TsConfig/Page/Mod/Wizards/NewContentElement.tsconfig">'
+    '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:pepebike/Configuration/TsConfig/Page/Mod/Wizards/NewContentElement.tsconfig">'
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -25,5 +25,5 @@ $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\
 $iconRegistry->registerIcon(
     'pepe-bike',
     \TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider::class,
-    ['source' => 'EXT:pepe_bike/Resources/Public/Icons/Extension.gif']
+    ['source' => 'EXT:pepebike/Resources/Public/Icons/Extension.gif']
 );

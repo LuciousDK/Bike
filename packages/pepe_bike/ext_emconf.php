@@ -1,6 +1,6 @@
 <?php
 
-$_EXTKEY = 'pepe_bike';
+$_EXTKEY = 'pepebike';
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'Bike Extension',
