@@ -12,9 +12,19 @@ class Client extends FrontendUser
 
     /**
      * @var ObjectStorage<Bicycle>
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $bicycles;
 
+
+    /**
+     * initializeObject
+     */
+    public function initializeObject(): void
+    {
+        parent::initializeObject();
+        $this->bicycles = $this->bicycles ?? new ObjectStorage();
+    }
 
     /**
      * Get $bicycles
@@ -29,11 +39,11 @@ class Client extends FrontendUser
     /**
      * Set $bicycles
      *
-     * @param  ObjectStorage<Bicycle>  $bicycles 
+     * @param  ObjectStorage<Bicycle> $bicycles 
      *
      * @return  self
      */ 
-    public function setBicycles(ObjectStorage $bicycles): Client
+    public function setBicycles(ObjectStorage $bicycles): self
     {
         $this->bicycles = $bicycles;
 
@@ -47,7 +57,7 @@ class Client extends FrontendUser
      *
      * @return  self
      */ 
-    public function addBicycle(Bicycle $bicycle): Client
+    public function addBicycle(Bicycle $bicycle): self
     {
         $this->bicycles->attach($bicycle);
 
@@ -61,7 +71,7 @@ class Client extends FrontendUser
      *
      * @return  self
      */ 
-    public function removeBicycle(Bicycle $bicycle): Client
+    public function removeBicycle(Bicycle $bicycle): self
     {
         $this->bicycles->detach($bicycle);
 

@@ -1,5 +1,8 @@
 List
-<f:debug inline="1" title="Debug Information">{_all}</f:debug>
+<f:debug>{clients}</f:debug>
+<f:debug>{bicycles}</f:debug>
+
+
 <f:for each="{bicycles}" as="bicycle">
 
     <f:form enctype="multipart/form-data" action="update" object="{bicycle}" name="bicycle">
@@ -9,7 +12,6 @@ List
         <f:form.submit value="Update" />
     </f:form>
 </f:for>
-
 
 <f:form action="create" controller="Main" object="{newBicycle}" objectName="newBicycle" method="post">
     <f:form.textfield property="model" />

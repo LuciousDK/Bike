@@ -23,7 +23,7 @@ class MainController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      * @var PropertyMapper
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
-    public $propertyMapper;
+    protected $propertyMapper;
 
     /**
      * @var BicycleRepository
@@ -66,9 +66,14 @@ class MainController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function listAction()
     {
-        $this->view->assign('bicycles', $this->bicycleRepository->findAll());
-        $this->view->assign('brand', $this->brandRepository->findAll());
-        $this->view->assign('clients', $this->clientRepository->findAll());
+        $bicycles =$this->bicycleRepository->findAll();
+        $this->view->assign('bicycles', $bicycles);
+
+        $brand = $this->brandRepository->findAll();
+        $this->view->assign('brand', $brand);
+        
+        $clients = $this->clientRepository->findAll();
+        $this->view->assign('clients', $clients);
     }
 
 

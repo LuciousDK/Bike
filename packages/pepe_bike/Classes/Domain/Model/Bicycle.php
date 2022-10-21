@@ -5,6 +5,7 @@ namespace Luat\PepeBike\Domain\Model;
 
 use \TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
 
 class Bicycle extends AbstractEntity
 {
@@ -52,9 +53,18 @@ class Bicycle extends AbstractEntity
 
     /**
      * @var ObjectStorage<Client>
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $clients;
 
+
+    /**
+     * initializeObject
+     */
+    public function initializeObject(): void
+    {
+        $this->clients = $this->clients ?? new ObjectStorage();
+    }
 
     /**
      * Get the value of model

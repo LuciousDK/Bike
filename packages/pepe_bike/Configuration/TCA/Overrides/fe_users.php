@@ -1,23 +1,6 @@
 <?php
 
 $additionalColumns = [
-    // 'tx_pepebike_bicycle' => [
-    //     'label' => 'Bicycle',
-    //     'config' => [
-    //         'type' => 'group',
-    //         'internal_type' => 'db',
-    //         'allowed' => 'tx_pepebike_domain_model_bicycle',
-    //         'size' => 1,
-    //         'maxitems' => 99,
-    //         'minitems' => 0,
-    //         'default' => null,
-    //         'fieldWizard' => [
-    //             'recordsOverview' => [
-    //                 'disabled' => true,
-    //             ],
-    //         ],
-    //     ],
-    // ],
     'tx_pepebike_bicycles' => [
         'label' => 'Bicycles',
         'config' => [
@@ -30,7 +13,6 @@ $additionalColumns = [
             'MM_opposite_field' => 'clients',
             'maxitems' => 1000,
         ],
-        'l10n_mode' => 'exclude',
     ],
 ];
 
