@@ -8,5 +8,10 @@ return [
     ],
     \Luat\PepeBike\Domain\Model\Client::class => [
         'tableName' => 'fe_users',
+        'properties' => [
+            'bicycles' => [
+                'fieldName' => 'tx_pepebike_bicycles',
+            ],
+        ],
     ],
 ];
