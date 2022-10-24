@@ -13,10 +13,10 @@ $_EXTKEY = 'pepebike';
     'Luat.PepeBike',
     'List',
     array( // An array holding the controller-action-combinations that are accessible
-        'Main' => 'list,create,update', // The first controller and its first action will be the default
+        'Main' => 'list,create,update,detail', // The first controller and its first action will be the default
     ),
     array( // An array of non-cachable controller-action-combinations (they must already be enabled)
-        'Main' => 'list,create,update',
+        'Main' => 'list,create,update,detail',
     )
 );
 

@@ -1,0 +1,38 @@
+<f:debug>{bicycle}</f:debug>
+<div class="m-bicycledetail">
+    <div class="container">
+        <div class="row">
+            <div class="m-bicycledetail__title">
+                <h1>Detail</h1>
+            </div>
+            <div class="m-bicycledetail__data" data-type="brand">
+                <div class="m-bicycledetail__data-label">Brand</div>
+                <div class="m-bicycledetail__data-value">{bicycle.brand.name}</div>
+            </div>
+            <div class="m-bicycledetail__data" data-type="model">
+                <div class="m-bicycledetail__data-label">Model</div>
+                <div class="m-bicycledetail__data-value">{bicycle.model}</div>
+            </div>
+            <div class="m-bicycledetail__data" data-type="color">
+                <div class="m-bicycledetail__data-label">Color</div>
+                <div class="m-bicycledetail__data-value">{bicycle.color}</div>
+            </div>
+            <div class="m-bicycledetail__data" data-type="wheels">
+                <div class="m-bicycledetail__data-label">Wheels</div>
+                <div class="m-bicycledetail__data-value">{bicycle.wheels}</div>
+            </div>
+            <div class="m-bicycledetail__data" data-type="clients">
+                <div class="m-bicycledetail__data-label">Clients</div>
+                <div class="m-bicycledetail__data-value">
+                    <f:if condition="{bicycle.clients}">
+                        <ul class="m-bicycledetail__clientlist">
+                            <f:for each="{bicycle.clients}" as="client">
+                                <li>{client.name}, {client.firstName} {client.middleName} {client.lastName} </li>
+                            </f:for>
+                        </ul>
+                    </f:if>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

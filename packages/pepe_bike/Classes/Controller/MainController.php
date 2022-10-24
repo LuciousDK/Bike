@@ -4,12 +4,11 @@ declare (strict_types = 1);
 
 namespace Luat\PepeBike\Controller;
 
-use TYPO3\CMS\Extbase\Annotation as Extbase;
-
 use Luat\PepeBike\Domain\Model\Bicycle;
 use Luat\PepeBike\Domain\Repository\BicycleRepository;
 use Luat\PepeBike\Domain\Repository\BrandRepository;
 use Luat\PepeBike\Domain\Repository\ClientRepository;
+use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use TYPO3\CMS\Extbase\Property\PropertyMapper;
 
 /**
@@ -24,6 +23,12 @@ class MainController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $propertyMapper;
+
+    /**
+     * @var PersistenceManager
+     * @TYPO3\CMS\Extbase\Annotation\Inject
+     */
+    protected $persistenceManager;
 
     /**
      * @var BicycleRepository
@@ -48,67 +53,6 @@ class MainController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function initializeAction()
     {
-        // $ffs = GeneralUtility::makeInstance(FlexFormService::class);
-
-        // $contentObject = $this->configurationManager->getContentObject();
-        // $contentElement = $contentObject->data;
-        // $this->data = $contentElement;
-
-        // $flex = $ffs->convertFlexFormContentToArray($contentElement['pi_flexform']);
-
-        // $this->data = array_merge($this->data, $flex);
-    }
-
-    /**
-     * action list
-     *
-     * @return void
-     */
-    public function listAction()
-    {
-        $bicycles =$this->bicycleRepository->findAll();
-        $this->view->assign('bicycles', $bicycles);
-
-        $brand = $this->brandRepository->findAll();
-        $this->view->assign('brand', $brand);
-        
-        $clients = $this->clientRepository->findAll();
-        $this->view->assign('clients', $clients);
-    }
-
-
-    /**
-     * Initialize create action
-     * @return void
-     */
-    public function initializeCreateAction()
-    {
-        if ($this->request->hasArgument('newBicycle')) {
-            $newBicycle = $this->request->getArgument('newBicycle');
-            $this->propertyMapper->convert(
-                $newBicycle,
-                Bicycle::class
-            );
-        }
-    }
-    /**
-     * action create
-     * @param Bicycle $newBicycle
-     * @Extbase\IgnoreValidation("newBicycle")
-     * @return void
-     */
-    public function createAction(Bicycle $newBicycle = null)
-    {
-        $this->bicycleRepository->add($newBicycle);
-    }
-
-
-    /**
-     * Initialize update action
-     * @return void
-     */
-    public function initializeUpdateAction()
-    {
         if ($this->request->hasArgument('bicycle')) {
             $bicycle = $this->request->getArgument('bicycle');
             $this->propertyMapper->convert(
@@ -117,13 +61,60 @@ class MainController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             );
         }
     }
+
+    /**
+     * action list
+     *
+     * @return void
+     */
+    public function listAction(Bicycle $bicycle = null)
+    {
+        $bicycles = $this->bicycleRepository->findAll();
+        $this->view->assign('bicycles', $bicycles);
+
+        $brand = $this->brandRepository->findAll();
+        $this->view->assign('brand', $brand);
+
+        $clients = $this->clientRepository->findAll();
+        $this->view->assign('clients', $clients);
+    }
+
+    /**
+     * action detail
+     * @param Bicycle $bicycle
+     * @return void
+     */
+    public function detailAction(Bicycle $bicycle = null)
+    {
+        if($this->request->hasArgument('bicycleUid')){
+            $uid = $this->request->getArgument('bicycleUid');
+            $this->view->assign('bicycle', $this->bicycleRepository->findByUid($uid));
+        }else{
+            // TODO: error.
+        };
+    }
+
+    /**
+     * action create
+     * @param Bicycle $bicycle
+     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("bicycle")
+     * @return void
+     */
+    public function createAction(Bicycle $bicycle)
+    {
+        $this->bicycleRepository->add($bicycle);
+        $this->persistenceManager->persistAll();
+
+        $this->redirect('detail', null, null, ['bicycleUid' => $bicycle->getUid()]);
+    }
+
     /**
      * action update
      * @param Bicycle $bicycle
-     * @Extbase\IgnoreValidation("bicycle")
+     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("bicycle")
      * @return void
      */
-    public function updateAction(Bicycle $bicycle = null)
+    public function updateAction(Bicycle $bicycle)
     {
         $this->bicycleRepository->update($bicycle);
     }

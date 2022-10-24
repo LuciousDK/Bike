@@ -2,7 +2,6 @@ List
 <f:debug>{clients}</f:debug>
 <f:debug>{bicycles}</f:debug>
 
-
 <f:for each="{bicycles}" as="bicycle">
 
     <f:form enctype="multipart/form-data" action="update" object="{bicycle}" name="bicycle">
@@ -13,7 +12,7 @@ List
     </f:form>
 </f:for>
 
-<f:form action="create" controller="Main" object="{newBicycle}" objectName="newBicycle" method="post">
+<f:form action="create" controller="Main" object="{bicycle}" objectName="bicycle" method="post">
     <f:form.textfield property="model" />
     <f:form.textfield property="color" />
     <f:form.textfield type="number" property="wheels" />
