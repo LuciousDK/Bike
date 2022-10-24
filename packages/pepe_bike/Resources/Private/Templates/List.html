@@ -1,21 +1,40 @@
-List
 <f:debug>{clients}</f:debug>
+<f:debug>{brands}</f:debug>
 <f:debug>{bicycles}</f:debug>
+<div class="m-bicyclelist">
+    <div class="container">
+        <div class="row">
+            <div class="m-bicyclelist__bicycles">
+                <f:for each="{bicycles}" as="bicycle">
 
-<f:for each="{bicycles}" as="bicycle">
-
-    <f:form enctype="multipart/form-data" action="update" object="{bicycle}" name="bicycle">
-        <f:form.textfield property="model" />
-        <f:form.textfield property="color" />
-        <f:form.textfield type="number" property="wheels" />
-        <f:form.submit value="Update" />
-    </f:form>
-</f:for>
-
-<f:form action="create" controller="Main" object="{bicycle}" objectName="bicycle" method="post">
-    <f:form.textfield property="model" />
-    <f:form.textfield property="color" />
-    <f:form.textfield type="number" property="wheels" />
-    <f:form.submit value="Create" />
-
-</f:form>
+                    <f:link.action action="detail" class="m-bicyclelist__bicycle" arguments="{bicycleUid:bicycle.uid}">
+                        {bicycle.model}</f:link.action>
+                </f:for>
+            </div>
+            <f:form action="create" controller="Main" object="{bicycle}" objectName="bicycle" method="post">
+                <fieldset>
+                    <legend>New Bicycle:</legend>
+                    <label>Model
+                        <f:form.textfield property="model" />
+                    </label>
+                    <label>Color
+                        <f:form.textfield property="color" />
+                    </label>
+                    <label>Wheels
+                        <f:form.textfield type="number" additionalAttributes="{'min':'0','max':'99'}"
+                            property="wheels" />
+                    </label>
+                    <label>Brand
+                        <f:form.select property="brand" options="{brands}" optionValueField="uid" optionLabelField="name"
+                            prependOptionLabel="Select an option" />
+                    </label>
+                    <label>Clients
+                        <f:form.select property="clients" options="{clients}" multiple="true" optionValueField="uid"
+                            optionLabelField="name" />
+                    </label>
+                    <f:form.submit value="Create" />
+                </fieldset>
+            </f:form>
+        </div>
+    </div>
+</div>

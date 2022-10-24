@@ -102,7 +102,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => '',
+                'eval' => 'required',
             ],
         ],
         'color' => [

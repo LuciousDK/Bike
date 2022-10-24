@@ -10,6 +10,7 @@ use Luat\PepeBike\Domain\Repository\BrandRepository;
 use Luat\PepeBike\Domain\Repository\ClientRepository;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use TYPO3\CMS\Extbase\Property\PropertyMapper;
+use TYPO3\CMS\Extbase\Property\PropertyMappingConfigurationBuilder;
 
 /**
  * MainController
@@ -23,6 +24,12 @@ class MainController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $propertyMapper;
+
+    /**
+     * @var PropertyMappingConfigurationBuilder
+     * @TYPO3\CMS\Extbase\Annotation\Inject
+     */
+    protected $propertyMappingConfigurationBuilder;
 
     /**
      * @var PersistenceManager
@@ -55,9 +62,16 @@ class MainController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         if ($this->request->hasArgument('bicycle')) {
             $bicycle = $this->request->getArgument('bicycle');
+
+            // Get property mapping configuration
+            $mappingConfiguration = $this->propertyMappingConfigurationBuilder->build();
+            // Adjust configuration to allow mapping of sub property 'usergroup'
+            $mappingConfiguration->forProperty('clients')
+                ->allowAllProperties();
+
             $this->propertyMapper->convert(
                 $bicycle,
-                Bicycle::class
+                Bicycle::class, $mappingConfiguration
             );
         }
     }
@@ -72,8 +86,8 @@ class MainController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $bicycles = $this->bicycleRepository->findAll();
         $this->view->assign('bicycles', $bicycles);
 
-        $brand = $this->brandRepository->findAll();
-        $this->view->assign('brand', $brand);
+        $brands = $this->brandRepository->findAll();
+        $this->view->assign('brands', $brands);
 
         $clients = $this->clientRepository->findAll();
         $this->view->assign('clients', $clients);
@@ -86,10 +100,10 @@ class MainController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function detailAction(Bicycle $bicycle = null)
     {
-        if($this->request->hasArgument('bicycleUid')){
+        if ($this->request->hasArgument('bicycleUid')) {
             $uid = $this->request->getArgument('bicycleUid');
             $this->view->assign('bicycle', $this->bicycleRepository->findByUid($uid));
-        }else{
+        } else {
             // TODO: error.
         };
     }

@@ -1,0 +1,34 @@
+.m-bicyclelist__bicycles {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 200px;
+}
+
+.m-bicyclelist__bicycle {
+    flex: 0 0 10%;
+}
+
+.m-bicyclelist form {
+    fieldset {
+        margin-top: 50px;
+        width: 50%;
+
+        * {
+            width: 100%;
+        }
+
+        >* {
+            margin-bottom: 20px;
+        }
+
+        legend {
+            width: fit-content;
+        }
+    }
+
+    * {
+        display: block;
+    }
+}
