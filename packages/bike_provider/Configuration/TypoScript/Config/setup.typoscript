@@ -30,4 +30,10 @@ config {
     compressCss = 0
     concatenateJs = 0
     concatenateCss = 0
+
+    tx_extbase {
+        mvc {
+            // callDefaultActionIfActionCantBeResolved = 1
+        }
+    }
 }
