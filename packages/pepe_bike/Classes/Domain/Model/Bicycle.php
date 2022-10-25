@@ -5,7 +5,7 @@ namespace Luat\PepeBike\Domain\Model;
 
 use \TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
-use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
+use TYPO3\CMS\Extbase\Annotation\Validate;
 
 class Bicycle extends AbstractEntity
 {
@@ -43,6 +43,7 @@ class Bicycle extends AbstractEntity
 
     /**
      * @var int
+     * @Validate("Luat\PepeBike\Domain\Validator\BicycleValidator")
      */
     protected $wheels;
 

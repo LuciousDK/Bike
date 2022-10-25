@@ -34,6 +34,7 @@ config {
     tx_extbase {
         mvc {
             // callDefaultActionIfActionCantBeResolved = 1
+            throwPageNotFoundIfActionCantBeResolved = 1
         }
     }
 }
