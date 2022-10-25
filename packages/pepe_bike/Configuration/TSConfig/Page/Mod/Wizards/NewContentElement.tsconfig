@@ -11,6 +11,15 @@ mod.wizards {
                         list_type = pepebike_list
                     },
                 }
+                pepebike_api {
+                    iconIdentifier = pepe-bike
+                    title = Bike API
+                    description = 
+                    tt_content_defValues {
+                        CType = list
+                        list_type = pepebike_api
+                    },
+                }
             }
 
             show = *
