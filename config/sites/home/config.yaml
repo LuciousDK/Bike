@@ -1,4 +1,12 @@
 base: '%env("PROJECT_BASE_URL")%'
+errorHandling:
+  -
+    errorCode: 404
+    errorHandler: Fluid
+    errorFluidTemplate: 'EXT:bike_provider/Resources/Private/Templates/Error.html'
+    errorFluidTemplatesRootPath: ''
+    errorFluidLayoutsRootPath: ''
+    errorFluidPartialsRootPath: ''
 languages:
   -
     title: English

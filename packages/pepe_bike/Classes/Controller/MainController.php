@@ -8,9 +8,13 @@ use Luat\PepeBike\Domain\Model\Bicycle;
 use Luat\PepeBike\Domain\Repository\BicycleRepository;
 use Luat\PepeBike\Domain\Repository\BrandRepository;
 use Luat\PepeBike\Domain\Repository\ClientRepository;
+use TYPO3\CMS\Core\Http\ImmediateResponseException;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use TYPO3\CMS\Extbase\Property\PropertyMapper;
 use TYPO3\CMS\Extbase\Property\PropertyMappingConfigurationBuilder;
+use TYPO3\CMS\Frontend\Controller\ErrorController;
+use TYPO3\CMS\Frontend\Page\PageAccessFailureReasons;
 
 /**
  * MainController
@@ -100,12 +104,17 @@ class MainController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function detailAction(Bicycle $bicycle = null)
     {
-        if ($this->request->hasArgument('bicycleUid')) {
-            $uid = $this->request->getArgument('bicycleUid');
-            $this->view->assign('bicycle', $this->bicycleRepository->findByUid($uid));
-        } else {
-            // TODO: error.
-        };
+        if (!$this->request->hasArgument('bicycleUid')) {
+            $this->throwStatus(404,'Bad Request','"bicycleUid" parameter missing from request.');
+        }
+
+        $uid = $this->request->getArgument('bicycleUid');
+        $bicycle = $this->bicycleRepository->findByUid($uid);
+        if (!$bicycle) {
+            $this->throwStatus(404,'Bad Request','No bicycle found with uid "' . $uid . '"');
+        }
+
+        $this->view->assign('bicycle', $bicycle);
     }
 
     /**
