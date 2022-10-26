@@ -150,17 +150,36 @@ page {
     }
     
 }
-json = PAGE
-json {
-  typeNum = 1
-  config {
-    disableAllHeaderCode = 1
-    additionalHeaders {
-      10 {
-        header = Content-Type: application/json
-        replace = 1
-      }
+[page["layout"] == 1]
+page >
+page = PAGE
+page {
+    typeNum = 0
+    config {
+        disableAllHeaderCode = 1
+        additionalHeaders {
+            10 {
+                header = Content-Type: application/json
+                replace = 1
+            }
+        }
     }
-  }
-  10 < tt_content.list.20.pepebike_api
+
+    10 = FLUIDTEMPLATE
+    10 {
+        templateName = Api
+        templateRootPaths {
+            0 = EXT:bike_provider/Resources/Private/Templates/Page/
+            1 = {$page.fluidtemplate.templateRootPath}
+        }
+        partialRootPaths {
+            0 = EXT:bike_provider/Resources/Private/Partials/Page/
+            1 = {$page.fluidtemplate.partialRootPath}
+        }
+        layoutRootPaths {
+            0 = EXT:bike_provider/Resources/Private/Layouts/Page/
+            1 = {$page.fluidtemplate.layoutRootPath}
+        }
+    }
 }
+[end]
