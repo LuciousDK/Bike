@@ -26,17 +26,15 @@ class JsonView extends ExtbaseJsonView
             ],
         ],
         'bicycle' => [
-            '_descendAll' => [
-                '_only' => ['color', 'model', 'wheels', 'brand', 'clients'],
-                '_descend' => [
-                    'clients' => [
-                        '_descendAll' => [
-                            '_only' => ['name', 'firstName', 'middleName', 'lastName', 'username'],
-                        ],
+            '_only' => ['color', 'model', 'wheels', 'brand', 'clients'],
+            '_descend' => [
+                'clients' => [
+                    '_descendAll' => [
+                        '_only' => ['name', 'firstName', 'middleName', 'lastName', 'username'],
                     ],
-                    'brand' => [
-                        '_only' => ['uid', 'name'],
-                    ],
+                ],
+                'brand' => [
+                    '_only' => ['uid', 'name'],
                 ],
             ],
         ],
@@ -59,17 +57,15 @@ class JsonView extends ExtbaseJsonView
             ],
         ],
         'brand' => [
-            '_descendAll' => [
-                '_only' => ['uid', 'name', 'bicycles'],
-                '_descend' => [
-                    'bicycles' => [
-                        '_descendAll' => [
-                            '_only' => ['color', 'model', 'wheels', 'clients'],
-                            '_descend' => [
-                                'clients' => [
-                                    '_only' => ['name', 'firstName', 'middleName', 'lastName', 'username'],
+            '_only' => ['uid', 'name', 'bicycles'],
+            '_descend' => [
+                'bicycles' => [
+                    '_descendAll' => [
+                        '_only' => ['color', 'model', 'wheels', 'clients'],
+                        '_descend' => [
+                            'clients' => [
+                                '_only' => ['name', 'firstName', 'middleName', 'lastName', 'username'],
 
-                                ],
                             ],
                         ],
                     ],
@@ -78,7 +74,7 @@ class JsonView extends ExtbaseJsonView
         ],
         'clients' => [
             '_descendAll' => [
-                '_only' => ['name', 'firstName', 'middleName', 'lasstName', 'bicycles'],
+                '_only' => ['name', 'firstName', 'middleName', 'lastName', 'bicycles'],
                 '_descend' => [
                     'bicycles' => [
                         '_descendAll' => [
@@ -94,16 +90,14 @@ class JsonView extends ExtbaseJsonView
             ],
         ],
         'client' => [
-            '_descendAll' => [
-                '_only' => ['name', 'firstName', 'middleName', 'lasstName', 'bicycles'],
-                '_descend' => [
-                    'bicycles' => [
-                        '_descendAll' => [
-                            '_only' => ['color', 'model', 'wheels', 'brand'],
-                            '_descend' => [
-                                'brand' => [
-                                    '_only' => ['uid', 'name'],
-                                ],
+            '_only' => ['name', 'firstName', 'middleName', 'lastName', 'bicycles'],
+            '_descend' => [
+                'bicycles' => [
+                    '_descendAll' => [
+                        '_only' => ['color', 'model', 'wheels', 'brand'],
+                        '_descend' => [
+                            'brand' => [
+                                '_only' => ['uid', 'name'],
                             ],
                         ],
                     ],
