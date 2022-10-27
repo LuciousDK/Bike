@@ -51,6 +51,15 @@ return [
                 'eval' => '',
             ],
         ],
+        'bicycles' => [
+            'label' => 'Bicycles',
+            'config' => [
+                'readOnly' => true,
+                'type' => 'inline',
+                'foreign_table' => 'tx_pepebike_domain_model_bicycle',
+                'foreign_field' => 'brand',
+            ],
+        ],
     ],
     'types' => [
         0 => [
@@ -59,7 +68,7 @@ return [
     ],
     'palettes' => [
         'paletteCore' => [
-            'showitem' => 'hidden,',
+            'showitem' => 'hidden',
             'canNotCollapse' => true,
         ],
     ],

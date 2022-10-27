@@ -10,6 +10,8 @@ use Luat\PepeBike\Domain\Repository\BrandRepository;
 use Luat\PepeBike\Domain\Repository\ClientRepository;
 use TYPO3\CMS\Extbase\Property\PropertyMapper;
 use TYPO3\CMS\Extbase\Property\PropertyMappingConfigurationBuilder;
+use Luat\PepeBike\Mvc\View\JsonView;
+// use \TYPO3\CMS\Extbase\Mvc\View\JsonView;
 
 /**
  * JsonController
@@ -18,14 +20,14 @@ class JsonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
 {
     /**
-     * @var \TYPO3\CMS\Extbase\Mvc\View\JsonView
+     * @var JsonView
      */
     protected $view;
 
     /**
      * @var string
      */
-    protected $defaultViewObjectName = \TYPO3\CMS\Extbase\Mvc\View\JsonView::class;
+    protected $defaultViewObjectName = JsonView::class;
 
     /**
      * @var PropertyMapper
@@ -38,7 +40,6 @@ class JsonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $propertyMappingConfigurationBuilder;
-
 
     /**
      * @var BicycleRepository
@@ -91,12 +92,10 @@ class JsonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $brands = $this->brandRepository->findAll();
 
         $clients = $this->clientRepository->findAll();
-        $data = [
-            'bicycles' =>$bicycles,
-            'brands' => $brands,
-            'clients' => $clients
-        ];
-        $this->view->assign('value',$data);
+        $this->view->assign('bicycles', $bicycles);
+        $this->view->assign('brands', $brands);
+        $this->view->assign('clients', $clients);
+        $this->view->setVariablesToRender(['bicycles','brands','clients']);
     }
 
 }

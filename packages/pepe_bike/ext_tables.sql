@@ -35,6 +35,7 @@ CREATE TABLE tx_pepebike_domain_model_brand (
   deleted tinyint(4) DEFAULT '0' NOT NULL,
   hidden tinyint(4) DEFAULT '0' NOT NULL,
   name varchar(255) DEFAULT '' NOT NULL,
+  bicycles int(11) DEFAULT '0' NOT NULL,
   PRIMARY KEY (uid),
   KEY parent (pid)
 );
@@ -55,5 +56,5 @@ CREATE TABLE tx_pepebike_feuser_bicycle_mm (
 # Add field 'tx_pepebike_bicycles' to table 'fe_users'
 #
 CREATE TABLE fe_users (
-	tx_pepebike_bicycles text
+  tx_pepebike_bicycles text
 );

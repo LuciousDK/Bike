@@ -16,6 +16,7 @@ class Brand extends AbstractEntity
 
     /**
      * @var ObjectStorage<Bicycle>
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $bicycles;
 

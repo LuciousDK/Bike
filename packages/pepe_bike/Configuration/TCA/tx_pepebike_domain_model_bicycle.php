@@ -90,11 +90,6 @@ return [
                 'maxitems' => 1,
                 'minitems' => 0,
                 'default' => null,
-                'fieldWizard' => [
-                    'recordsOverview' => [
-                        'disabled' => true,
-                    ],
-                ],
             ],
         ],
         'model' => [
