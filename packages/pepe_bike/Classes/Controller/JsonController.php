@@ -8,9 +8,10 @@ use Luat\PepeBike\Domain\Model\Bicycle;
 use Luat\PepeBike\Domain\Repository\BicycleRepository;
 use Luat\PepeBike\Domain\Repository\BrandRepository;
 use Luat\PepeBike\Domain\Repository\ClientRepository;
+use Luat\PepeBike\Mvc\View\JsonView;
 use TYPO3\CMS\Extbase\Property\PropertyMapper;
 use TYPO3\CMS\Extbase\Property\PropertyMappingConfigurationBuilder;
-use Luat\PepeBike\Mvc\View\JsonView;
+
 // use \TYPO3\CMS\Extbase\Mvc\View\JsonView;
 
 /**
@@ -60,42 +61,77 @@ class JsonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     protected $clientRepository;
 
     /**
-     * Init the actions
-     */
-    public function initializeAction()
-    {
-        if ($this->request->hasArgument('bicycle')) {
-            $bicycle = $this->request->getArgument('bicycle');
-
-            // Get property mapping configuration
-            $mappingConfiguration = $this->propertyMappingConfigurationBuilder->build();
-            // Adjust configuration to allow mapping of sub property 'usergroup'
-            $mappingConfiguration->forProperty('clients')
-                ->allowAllProperties();
-
-            $this->propertyMapper->convert(
-                $bicycle,
-                Bicycle::class, $mappingConfiguration
-            );
-        }
-    }
-
-    /**
      * action list
      *
      * @return void
      */
-    public function listAction(Bicycle $bicycle = null)
+    public function listAction()
     {
-        $bicycles = $this->bicycleRepository->findAll();
 
-        $brands = $this->brandRepository->findAll();
+        if (!$this->request->hasArgument('object')) {
 
-        $clients = $this->clientRepository->findAll();
-        $this->view->assign('bicycles', $bicycles);
-        $this->view->assign('brands', $brands);
-        $this->view->assign('clients', $clients);
-        $this->view->setVariablesToRender(['bicycles','brands','clients']);
+            $bicycles = $this->bicycleRepository->findAll();
+
+            $brands = $this->brandRepository->findAll();
+
+            $clients = $this->clientRepository->findAll();
+            $this->view->assign('bicycles', $bicycles);
+            $this->view->assign('brands', $brands);
+            $this->view->assign('clients', $clients);
+            $this->view->setVariablesToRender(['bicycles', 'brands', 'clients']);
+
+            return;
+        }
+        switch ($this->request->getArgument('object')) {
+            case 'bicycle':
+                if ($this->request->hasArgument('id')) {
+                    $bicycle = $this->bicycleRepository->findByUid($this->request->getArgument('id'));
+
+                    $this->view->assign('bicycle', $bicycle);
+                    $this->view->setVariablesToRender(['bicycle']);
+
+                    break;
+                }
+            case 'bicycles':
+                $bicycles = $this->bicycleRepository->findAll();
+                $this->view->assign('bicycles', $bicycles);
+
+                $this->view->setVariablesToRender(['bicycles']);
+                break;
+            case 'brand':
+                if ($this->request->hasArgument('id')) {
+                    $brand = $this->brandRepository->findByUid($this->request->getArgument('id'));
+
+                    $this->view->assign('brand', $brand);
+
+                    $this->view->setVariablesToRender(['brand']);
+                    break;
+                }
+            case 'brands':
+                $brands = $this->brandRepository->findAll();
+                $this->view->assign('brands', $brands);
+                $this->view->setVariablesToRender(['brands']);
+
+                break;
+            case 'client':
+                if ($this->request->hasArgument('id')) {
+                    $client = $this->clientRepository->findByUid($this->request->getArgument('id'));
+
+                    $this->view->assign('client', $client);
+                    $this->view->setVariablesToRender(['client']);
+
+                    break;
+                }
+            case 'clients':
+                $clients = $this->clientRepository->findAll();
+                $this->view->assign('clients', $clients);
+                $this->view->setVariablesToRender(['clients']);
+
+                break;
+            default:
+                $this->throwStatus(400, 'Bad Request', '');
+                break;
+        }
     }
 
 }

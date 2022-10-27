@@ -23,3 +23,14 @@ languages:
     websiteTitle: ''
 rootPageId: 1
 websiteTitle: ''
+routeEnhancers:
+  api:
+    type: Extbase
+    extension: Pepebike
+    plugin: Api
+    routes:
+      - routePath: '/{object}'
+        _controller: 'Json::list'
+      - routePath: '/{object}/{id}'
+        _controller: 'Json::list'
+    defaultController: 'Json::list'

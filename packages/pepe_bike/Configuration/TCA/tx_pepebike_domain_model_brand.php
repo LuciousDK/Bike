@@ -54,7 +54,7 @@ return [
         'bicycles' => [
             'label' => 'Bicycles',
             'config' => [
-                'readOnly' => true,
+                // 'readOnly' => true,
                 'type' => 'inline',
                 'foreign_table' => 'tx_pepebike_domain_model_bicycle',
                 'foreign_field' => 'brand',
@@ -63,7 +63,7 @@ return [
     ],
     'types' => [
         0 => [
-            'showitem' => 'name',
+            'showitem' => 'name,bicycles',
         ],
     ],
     'palettes' => [
