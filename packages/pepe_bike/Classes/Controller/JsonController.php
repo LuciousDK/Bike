@@ -26,7 +26,7 @@ class JsonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     protected $view;
 
     /**
-     * @var string
+     * @var JsonView
      */
     protected $defaultViewObjectName = JsonView::class;
 

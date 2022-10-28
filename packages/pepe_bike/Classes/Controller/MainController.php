@@ -84,7 +84,6 @@ class MainController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->clearCacheOnError();
         $this->addErrorFlashMessage();
         $this->forwardToReferringRequest();
-
         return $this->getFlattenedValidationErrorMessage();
     }
 
