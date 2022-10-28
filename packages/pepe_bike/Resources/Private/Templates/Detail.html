@@ -1,4 +1,10 @@
-<f:debug>{bicycle}</f:debug>
+<html 
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:pepe="http://typo3.org/ns/Luat/PepeBike/ViewHelpers" 
+    data-namespace-typo3-fluid="true">
+
+<pepe:test string="hola mundo"></pepe:test>
+<f:debug>{_all}</f:debug>
 <div class="m-bicycledetail">
     <div class="container">
         <div class="row">
@@ -36,3 +42,5 @@
         </div>
     </div>
 </div>
+
+</html>
