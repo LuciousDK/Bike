@@ -43,7 +43,7 @@ class Bicycle extends AbstractEntity
 
     /**
      * @var int
-     * @Validate("Luat\PepeBike\Domain\Validator\BicycleValidator")
+     * @Validate("\Luat\PepeBike\Domain\Validator\BicycleValidator")
      */
     protected $wheels;
 

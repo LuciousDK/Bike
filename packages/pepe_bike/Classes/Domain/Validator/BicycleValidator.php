@@ -8,17 +8,9 @@ use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
 
 class BicycleValidator extends AbstractValidator
 {
-    // protected $supportedOptions = [
-    //     'minimum' => [
-    //         10,
-    //         'Minimum number of character',
-    //         'integer',
-    //     ],
-    // ];
-
-    public function isValid($value): void
+    public function isValid($value)
     {
-        $minimum = intval($this->options['minimum']);
+        $minimum = 0;
         if (!is_int($value) || $value <= $minimum) {
             $this->addError('Number must be larger than ' . $minimum, 1548653067);
         }
