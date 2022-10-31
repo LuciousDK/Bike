@@ -123,6 +123,12 @@ class MainController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         $this->view->assign('bicycle', $bicycle);
     }
+    /**
+     * Init Create Action. This happens after "initializeAction"
+     */
+    public function initializeCreateAction()
+    {
+    }
 
     /**
      * action create
