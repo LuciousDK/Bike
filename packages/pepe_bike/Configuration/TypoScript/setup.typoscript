@@ -17,3 +17,12 @@ plugin.tx_pepebike {
         storagePid = {$plugin.tx_pepebike.settings.storagePid}
     }
 }
+config.tx_extbase {
+    view {
+        widget {
+            Luat\PepeBike\ViewHelpers\Widget\FilterViewHelper {
+                templateRootPath = EXT:pepebike/Resources/Private/Templates/ViewHelpers/Widget/Filter/
+            }
+        }
+    }
+}

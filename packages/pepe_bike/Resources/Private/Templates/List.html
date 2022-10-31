@@ -1,12 +1,18 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:pepe="http://typo3.org/ns/Luat/PepeBike/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<pepe:widget.filter objects="{1:'pepe'}" />
 <div class="m-bicyclelist">
     <div class="container">
         <div class="row">
             <div class="m-bicyclelist__bicycles">
-                <f:for each="{bicycles}" as="bicycle">
-
-                    <f:link.action action="detail" class="m-bicyclelist__bicycle" arguments="{bicycleUid:bicycle.uid}">
-                        {bicycle.model}</f:link.action>
-                </f:for>
+                <f:widget.paginate objects="{bicycles}" as="paginatedBicycles">
+                    <f:for each="{paginatedBicycles}" as="bicycle">
+                        <f:link.action action="detail" class="m-bicyclelist__bicycle"
+                            arguments="{bicycleUid:bicycle.uid}">
+                            {bicycle.model}</f:link.action>
+                    </f:for>
+                </f:widget.paginate>
             </div>
             <f:form action="create" controller="Main" objectName="bicycle" method="post">
                 <fieldset>
@@ -22,8 +28,8 @@
                             property="wheels" />
                     </label>
                     <label>Brand
-                        <f:form.select property="brand" options="{brands}" optionValueField="uid" optionLabelField="name"
-                        prependOptionLabel="Select an option" prependOptionValue="0" />
+                        <f:form.select property="brand" options="{brands}" optionValueField="uid"
+                            optionLabelField="name" prependOptionLabel="Select an option" prependOptionValue="0" />
                     </label>
                     <label>Clients
                         <f:form.select property="clients" options="{clients}" multiple="true" optionValueField="uid"

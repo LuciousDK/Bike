@@ -152,6 +152,7 @@ class MainController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     public function updateAction(Bicycle $bicycle)
     {
         $this->bicycleRepository->update($bicycle);
+        $this->redirect('detail', null, null, ['bicycleUid' => $bicycle->getUid()]);
     }
 
 }
