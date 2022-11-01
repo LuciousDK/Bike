@@ -71,7 +71,8 @@ class MainController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
             $this->propertyMapper->convert(
                 $bicycle,
-                Bicycle::class, $mappingConfiguration
+                Bicycle::class,
+                $mappingConfiguration
             );
         }
     }
@@ -139,7 +140,6 @@ class MainController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         $this->bicycleRepository->add($bicycle);
         $this->persistenceManager->persistAll();
-
         $this->redirect('detail', null, null, ['bicycleUid' => $bicycle->getUid()]);
     }
 
