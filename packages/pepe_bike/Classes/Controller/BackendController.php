@@ -8,6 +8,7 @@ use Luat\PepeBike\Domain\Model\Bicycle;
 use Luat\PepeBike\Domain\Repository\BicycleRepository;
 use Luat\PepeBike\Domain\Repository\BrandRepository;
 use Luat\PepeBike\Domain\Repository\ClientRepository;
+use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use TYPO3\CMS\Extbase\Property\PropertyMapper;
@@ -37,6 +38,12 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $propertyMappingConfigurationBuilder;
+
+    /**
+     * @var PageRenderer
+     * @TYPO3\CMS\Extbase\Annotation\Inject
+     */
+    protected $pageRenderer;
 
     /**
      * @var PersistenceManager
@@ -146,21 +153,7 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     protected function initializeView(ViewInterface $view)
     {
-        $pageRenderer = $this->objectManager->get(\TYPO3\CMS\Core\Page\PageRenderer::class);
-        // if ($view->getModuleTemplate() !== null) {
-        //     $pageRenderer = $view->getModuleTemplate()->getPageRenderer();
 
-        $pageRenderer->loadRequireJsModule('TYPO3/CMS/Core/Ajax/AjaxRequest');
-        //     $pageRenderer->loadRequireJsModule('TYPO3/CMS/Backend/Tooltip');
-        //     $pageRenderer->loadRequireJsModule('TYPO3/CMS/Blog/Datatables');
-        //     $pageRenderer->loadRequireJsModule('TYPO3/CMS/Blog/SetupWizard');
-        //     $pageRenderer->loadRequireJsModule('TYPO3/CMS/Blog/MassUpdate');
-
-        //     $pageRenderer->addCssFile('EXT:blog/Resources/Public/Css/backend.min.css', 'stylesheet', 'all', '', false);
-        //     $pageRenderer->addCssFile('EXT:blog/Resources/Public/Css/Datatables.min.css', 'stylesheet', 'all', '', false);
-
-        //     $view->assign('action', $this->actionMethodName);
-
-        // }
+        $this->pageRenderer->loadRequireJsModule('TYPO3/CMS/Pepebike/Datatables');
     }
 }

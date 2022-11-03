@@ -22,7 +22,7 @@ if (!defined('TYPO3_MODE')) {
     [
         'labels' => 'PepeBike',
         'name' => 'pepebike',
-        'iconIdentifier' => 'module-pepebike',
+        'iconIdentifier' => 'pepe-bike',
     ]
 );
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
@@ -35,7 +35,7 @@ if (!defined('TYPO3_MODE')) {
     ],
     [
         'access' => 'admin',
-        'icon' => '',
+        'iconIdentifier' => 'pepe-bike',
         'labels' => 'Hola',
     ]
 );
