@@ -38,5 +38,19 @@ class BicycleRepository extends Repository
         return $query->execute();
     }
 
+    /**
+     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @throws \TYPO3\CMS\Core\Context\Exception\AspectNotFoundException
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     */
+    public function findAllIncludingHidden()
+    {
+        $query = $this->createQuery(); 
+        $query->getQuerySettings()
+            ->setIgnoreEnableFields(true)
+            ->setEnableFieldsToBeIgnored(['disabled']);
+        return $query->execute();
+    }
+
 
 }

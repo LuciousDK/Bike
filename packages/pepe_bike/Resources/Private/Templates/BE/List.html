@@ -11,53 +11,58 @@
     <f:if condition="{f:count() -> bicycles} > 0">
         <f:then>
 
-            <table class="table table-striped table-hover dataTables"
-                data-columns='[{"type": "string"}, {"type": "string"}, {"type": "string"}, {"type": "num"}, {"type": "string"}, {"type": "string"}]'>
+            <table class="table table-striped table-hover Datatables">
                 <thead>
                     <tr>
                         <th>
                             Model
                         </th>
-                        <th data-filter="true">
+                        <th>
                             Hidden
                         </th>
-                        <th data-filter="true">
+                        <th>
                             Color
                         </th>
-                        <th data-filter="true">
+                        <th>
                             Wheels
                         </th>
-                        <th data-filter="true">
+                        <th>
                             Brand
                         </th>
-                        <th data-filter="true">
+                        <th>
                             Clients
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                     <f:for each="{bicycles}" as="bicycle">
-                        <tr>
+                        <tr data-object-type="bicycle" data-object-uid="{bicycle.uid}">
 
-                            <td class="nowrap" data-search="{bicycle.model}" data-filter="{bicycle.model}">
+                            <td data-object-property="model">
                                 <f:link.action action="detail" arguments="{bicycleUid:bicycle.uid}">
                                     {bicycle.model}</f:link.action>
+                                <a class="" href="#" data-action="edit"><span class="t3-icon fa fa-pencil"></span></a>
                             </td>
 
                             <f:variable name="hiddenString"
-                                value="{f:if(condition: bicycle.hidden, then: 'yes', else: 'no')}" />
-                            <td class="nowrap" data-search="{hiddenString}" data-filter="{hiddenString}">
-                                {hiddenString}
+                                value="{f:if(condition: bicycle.hidden, then: ' checked', else: '')}" />
+                            <td data-object-property="hidden">
+                                <label class="switch">
+                                    <input class="hidden-toggler"type="checkbox"{hiddenString}>
+                                    <span class="slider"></span>
+                                </label>
                             </td>
 
-                            <td class="nowrap" data-search="{bicycle.color}" data-filter="{bicycle.color}">
+                            <td data-object-property="color">
                                 {bicycle.color}
+                                <a class="" href="#" data-action="edit"><span class="t3-icon fa fa-pencil"></span></a>
                             </td>
 
-                            <td data-search="{bicycle.wheels}" data-filter="{bicycle.wheels}">
+                            <td data-object-property="wheels">
                                 {bicycle.wheels}
+                                <a class="" href="#" data-action="edit"><span class="t3-icon fa fa-pencil"></span></a>
                             </td>
-                            <td data-search="{bicycle.brand}" data-filter="{bicycle.brand}">
+                            <td>
                                 {bicycle.brand.name}
                             </td>
 
@@ -73,7 +78,7 @@
                                     </f:if>
                                 </f:for>
                             </f:if>
-                            <td data-search="{clientString}" data-filter="{clientString}">
+                            <td>
                                 <f:for each="{bicycle.clients}" as="client" iteration="iteration">
                                     {client.firstName} {client.middleName} {client.lastName}
                                 </f:for>

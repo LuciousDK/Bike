@@ -84,7 +84,7 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     public function listAction()
     {
-        $bicycles = $this->bicycleRepository->findAll();
+        $bicycles = $this->bicycleRepository->findAllIncludingHidden();
         $this->view->assign('bicycles', $bicycles);
 
         $brands = $this->brandRepository->findAll();
@@ -155,5 +155,7 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     {
 
         $this->pageRenderer->loadRequireJsModule('TYPO3/CMS/Pepebike/Datatables');
+
+        $this->pageRenderer->addCssFile('EXT:pepebike/Resources/Public/Css/Datatables.css');
     }
 }
