@@ -40,11 +40,11 @@ class BicycleRepository extends Repository
     }
 
     /**
-     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @return Bicycle
      * @throws \TYPO3\CMS\Core\Context\Exception\AspectNotFoundException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
-    public function findByUidIncludingHidden(int $uid)
+    public function findByUidIncludingHidden(int $uid): Bicycle
     {
         $query = $this->createQuery();
         $query->getQuerySettings()
@@ -52,7 +52,8 @@ class BicycleRepository extends Repository
             ->setEnableFieldsToBeIgnored(['disabled']);
         $constraints = [];
         $constraints[] = $query->equals('uid', (int) $uid);
-        return $query->matching($query->logicalAnd($constraints))->execute()->getFirst();
+        $bicycle = $query->matching($query->logicalAnd($constraints))->execute()->getFirst();
+        return $bicycle;
     }
     /**
      * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
@@ -78,7 +79,7 @@ class BicycleRepository extends Repository
     public function changeHiddenStatus($bicycle, ?bool $status = null): ?Bicycle
     {
         if (is_int($bicycle)) {
-            $bicycle = $this->findByUidIncludingHidden((int)$bicycle);
+            $bicycle = $this->findByUidIncludingHidden((int) $bicycle);
         }
         if (!($bicycle instanceof Bicycle) || $bicycle == null) {
             return null;
@@ -88,6 +89,7 @@ class BicycleRepository extends Repository
         }
 
         $bicycle->setHidden($status);
+        $this->update($bicycle);
         return $bicycle;
 
     }

@@ -31,7 +31,7 @@ if (!defined('TYPO3_MODE')) {
     'pepebike_list',
     '',
     [
-        \Luat\PepeBike\Controller\BackendController::class => 'list,create,update,detail'
+        \Luat\PepeBike\Controller\BackendController::class => 'list,create,update,detail,updateHiddenStatus'
     ],
     [
         'access' => 'admin',

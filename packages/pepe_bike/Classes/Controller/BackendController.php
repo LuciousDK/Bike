@@ -148,7 +148,34 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         // $this->redirect('detail', null, null, ['bicycleUid' => $bicycle->getUid()]);
     }
 
+    public function initializeUpdateHiddenStatusAction()
+    {
+        if ($this->request->hasArgument('status')) {
+            $status = filter_var($this->request->getArgument('status'), FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+            $this->request->setArgument('status', $status);
+        }
+
+    }
+
     /**
+     * action update hidden status
+     * @param int $uid
+     * @param ?bool $status
+     * @return void
+     */
+    public function updateHiddenStatusAction(int $uid, ?bool $status)
+    {
+        $this->response->setHeader('Content-Type', 'application/json');
+        if ($status === null) {
+            return json_encode(['success' => false,'message'=>'"status" field empty.']);
+        }
+        $bicycle = $this->bicycleRepository->changeHiddenStatus($uid, $status);
+        if (!$bicycle) {
+            return json_encode(['success' => false,'message'=>'error while updating hidden status.']);
+        }
+        return json_encode(['success' => true]);
+    }
+    /**s
      * @param ViewInterface $view
      */
     protected function initializeView(ViewInterface $view)
