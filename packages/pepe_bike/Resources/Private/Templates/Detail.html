@@ -35,6 +35,31 @@
                     </f:if>
                 </div>
             </div>
+
+            <f:form action="update" controller="Main" objectName="bicycle" object="{bicycle}" method="post">
+                <fieldset>
+                    <legend>New Bicycle:</legend>
+                    <label>Model
+                        <f:form.textfield property="model" />
+                    </label>
+                    <label>Color
+                        <f:form.textfield property="color" />
+                    </label>
+                    <label>Wheels
+                        <f:form.textfield type="number" additionalAttributes="{'min':'1','max':'99',value:'1'}"
+                            property="wheels" />
+                    </label>
+                    <label>Brand
+                        <f:form.select property="brand" options="{brands}" optionValueField="uid"
+                            optionLabelField="name" prependOptionLabel="Select an option" prependOptionValue="0" />
+                    </label>
+                    <label>Clients
+                        <f:form.select property="clients" options="{clients}" multiple="true" optionValueField="uid"
+                            optionLabelField="name" />
+                    </label>
+                    <f:form.submit value="Update" />
+                </fieldset>
+            </f:form>
         </div>
     </div>
 </div>
