@@ -72,7 +72,7 @@ class BicycleRepository extends Repository
     /**
      * @param int|Bicycle $bicycle
      * @param null|bool $bicycle
-     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @return Bicycle
      * @throws \TYPO3\CMS\Core\Context\Exception\AspectNotFoundException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */

@@ -167,13 +167,13 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     {
         $this->response->setHeader('Content-Type', 'application/json');
         if ($status === null) {
-            return json_encode(['success' => false,'message'=>'"status" field empty.']);
+            return json_encode(['success' => false, 'message' => '"status" field empty.']);
         }
         $bicycle = $this->bicycleRepository->changeHiddenStatus($uid, $status);
         if (!$bicycle) {
-            return json_encode(['success' => false,'message'=>'error while updating hidden status.']);
+            return json_encode(['success' => false, 'message' => 'error while updating hidden status.']);
         }
-        return json_encode(['success' => true]);
+        return json_encode(['success' => true, 'message' => '', 'currentState' => $bicycle->getHidden()]);
     }
     /**s
      * @param ViewInterface $view

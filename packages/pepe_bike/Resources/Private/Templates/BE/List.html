@@ -47,11 +47,13 @@
                             <f:variable name="hiddenString"
                                 value="{f:if(condition: bicycle.hidden, then: ' checked', else: '')}" />
                             <f:variable name="requestUri">
-                                <f:uri.action action="updateHiddenStatus" arguments="{uid: bicycle.uid, status:'__status__'}"/>
+                                <f:uri.action action="updateHiddenStatus"
+                                    arguments="{uid: bicycle.uid, status:'__status__'}" />
                             </f:variable>
                             <td data-object-property="hidden">
                                 <label class="switch">
-                                    <input class="hidden-toggler" type="checkbox" {hiddenString} data-request-uri="{requestUri ->f:spaceless()}">
+                                    <input class="hidden-toggler" type="checkbox" {hiddenString}
+                                        data-request-uri="{requestUri ->f:spaceless()}">
                                     <span class="slider"></span>
                                 </label>
                             </td>
