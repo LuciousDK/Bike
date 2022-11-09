@@ -1,3 +1,4 @@
+<html xmlns:be="http://typo3.org/ns/TYPO3\CMS\Backend\ViewHelpers" data-namespace-typo3-fluid="true">
 <f:layout name="Backend" />
 <f:section name="Intro">
     <h1>
@@ -36,60 +37,73 @@
                 </thead>
                 <tbody>
                     <f:for each="{bicycles}" as="bicycle">
-                        <tr data-object-type="bicycle" data-object-uid="{bicycle.uid}">
+                        <f:form action="update" object="{bicycle}" objectName="bicycle" enctype="multipart/form-data"
+                            id="bicycleform-{bicycle.uid}">
+                            <tr data-object-type="bicycle" data-object-uid="{bicycle.uid}">
+                                <td>
+                                    <f:form.hidden property="uid"
+                                        additionalAttributes="{hidden:'true',form:'bicycleform-{bicycle.uid}'}" />
+                                    <be:link.editRecord uid="{bicycle.uid}" class="display-field"
+                                        table="tx_pepebike_domain_model_bicycle">{bicycle.model}</be:link.editRecord>
+                                    <f:form.textfield property="model" class="edit-field"
+                                        additionalAttributes="{hidden:'true',form:'bicycleform-{bicycle.uid}',disabled:'true'}" />
+                                    <f:render partial="ActionButtons" arguments="{form: 'bicycleform-{bicycle.uid}'}"/>
+                                </td>
 
-                            <td data-object-property="model">
-                                <f:link.action action="detail" arguments="{bicycleUid:bicycle.uid}">
-                                    {bicycle.model}</f:link.action>
-                                <a class="" href="#" data-action="edit"><span class="t3-icon fa fa-pencil"></span></a>
-                            </td>
+                                <f:variable name="hiddenString"
+                                    value="{f:if(condition: bicycle.hidden, then: ' checked', else: '')}" />
+                                <f:variable name="requestUri">
+                                    <f:uri.action action="updateHiddenStatus"
+                                        arguments="{uid: bicycle.uid, status:'__status__'}" />
+                                </f:variable>
+                                <td>
+                                    <label class="switch">
+                                        <input class="hidden-toggler" type="checkbox" {hiddenString}
+                                            data-request-uri="{requestUri ->f:spaceless()}">
+                                        <span class="slider"></span>
+                                    </label>
+                                </td>
 
-                            <f:variable name="hiddenString"
-                                value="{f:if(condition: bicycle.hidden, then: ' checked', else: '')}" />
-                            <f:variable name="requestUri">
-                                <f:uri.action action="updateHiddenStatus"
-                                    arguments="{uid: bicycle.uid, status:'__status__'}" />
-                            </f:variable>
-                            <td data-object-property="hidden">
-                                <label class="switch">
-                                    <input class="hidden-toggler" type="checkbox" {hiddenString}
-                                        data-request-uri="{requestUri ->f:spaceless()}">
-                                    <span class="slider"></span>
-                                </label>
-                            </td>
+                                <td>
+                                    <span class="display-field">{bicycle.color}</span>
+                                    <f:form.textfield property="color" class="edit-field"
+                                        additionalAttributes="{hidden:'true',form:'bicycleform-{bicycle.uid}',disabled:'true'}" />
+                                    <f:render partial="ActionButtons"  arguments="{form: 'bicycleform-{bicycle.uid}'}"/>
+                                </td>
 
-                            <td data-object-property="color">
-                                {bicycle.color}
-                                <a class="" href="#" data-action="edit"><span class="t3-icon fa fa-pencil"></span></a>
-                            </td>
-
-                            <td data-object-property="wheels">
-                                {bicycle.wheels}
-                                <a class="" href="#" data-action="edit"><span class="t3-icon fa fa-pencil"></span></a>
-                            </td>
-                            <td>
-                                {bicycle.brand.name}
-                            </td>
-
-                            <f:variable name="clientString" value="" />
-                            <f:if condition="{bicycle.clients}">
-                                <f:for each="{bicycle.clients}" as="client" iteration="{iteration}">
-                                    <f:variable name="clientString"
-                                        value="{clientString}{client.firstName} {client.middleName} {client.lastName}" />
-                                    <f:if condition="{iteration.isLast}">
-                                        <f:else>
-                                            <f:variable name="clientString" value="{clientString}, " />
-                                        </f:else>
+                                <td>
+                                    <span class="display-field">{bicycle.wheels}</span>
+                                    <f:form.textfield type="number" property="wheels" class="edit-field"
+                                        additionalAttributes="{'min':'1','max':'99',hidden:'true',form:'bicycleform-{bicycle.uid}',disabled:'true'}" />
+                                    <f:render partial="ActionButtons"  arguments="{form: 'bicycleform-{bicycle.uid}'}"/>
+                                </td>
+                                <td>
+                                    <f:if condition="{bicycle.brand} != null">
+                                        {bicycle.brand.name}
                                     </f:if>
-                                </f:for>
-                            </f:if>
-                            <td>
-                                <f:for each="{bicycle.clients}" as="client" iteration="iteration">
-                                    {client.firstName} {client.middleName} {client.lastName}
-                                </f:for>
-                            </td>
+                                </td>
 
-                        </tr>
+                                <f:variable name="clientString" value="" />
+                                <f:if condition="{bicycle.clients}">
+                                    <f:for each="{bicycle.clients}" as="client" iteration="{iteration}">
+                                        <f:variable name="clientString"
+                                            value="{clientString}{client.firstName} {client.middleName} {client.lastName}" />
+                                        <f:if condition="{iteration.isLast}">
+                                            <f:else>
+                                                <f:variable name="clientString" value="{clientString}, " />
+                                            </f:else>
+                                        </f:if>
+                                    </f:for>
+                                </f:if>
+                                <td>
+                                    <f:for each="{bicycle.clients}" as="client" iteration="iteration">
+                                        {client.firstName} {client.middleName} {client.lastName}
+                                    </f:for>
+                                </td>
+
+                            </tr>
+
+                        </f:form>
                     </f:for>
                 </tbody>
             </table>
