@@ -74,7 +74,6 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     public function initializeAction()
     {
-
     }
 
     /**
@@ -113,6 +112,69 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $this->view->assign('bicycle', $bicycle);
     }
 
+    public function initializeUpdateAction()
+    {
+        //Cant  map through property mapper since it will be handling hidden records.
+        if ($this->request->hasArgument('bicycle')) {
+            $bicycle = $this->bicycleRepository->findByUidIncludingHidden(
+                (int) $this->request->getArgument('bicycle')['__identity']
+            );
+            $this->request->setArgument('data', $this->request->getArgument('bicycle'));
+            $this->request->setArgument('bicycle', $bicycle);
+        }
+
+    }
+    /**
+     * action update
+     * @param Bicycle $bicycle
+     * @param array $data
+     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("bicycle")
+     * @return void
+     */
+    public function updateAction(Bicycle $bicycle, array $data)
+    {
+        $bicycle = $this->bicycleRepository->updateBicycleData($bicycle,$data);
+
+        $this->bicycleRepository->update($bicycle);
+        
+        $this->response->setHeader('Content-Type', 'application/json');
+        return json_encode(['success' => true]);
+    }
+
+    public function initializeUpdateHiddenStatusAction()
+    {
+
+        if ($this->request->hasArgument('bicycle')) {
+            $bicycle = $this->bicycleRepository->findByUidIncludingHidden(
+                (int) $this->request->getArgument('bicycle')['__identity']
+            );
+            $this->request->setArgument('bicycle', $bicycle);
+        }
+
+        if ($this->request->hasArgument('status')) {
+            $status = filter_var($this->request->getArgument('status'), FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+            $this->request->setArgument('status', $status);
+        }
+
+    }
+
+    /**
+     * action update hidden status
+     * @param Bicycle $bicycle
+     * @param ?bool $status
+     * @return void
+     */
+    public function updateHiddenStatusAction(Bicycle $bicycle, ?bool $status)
+    {
+        $this->response->setHeader('Content-Type', 'application/json');
+        if ($status === null) {
+            return json_encode(['success' => false, 'message' => '"status" field empty.']);
+        }
+        $this->bicycleRepository->changeHiddenStatus($bicycle, $status);
+
+        return json_encode(['success' => true, 'message' => '', 'currentState' => $bicycle->getHidden()]);
+    }
+
     /**
      * Error Action
      */
@@ -125,57 +187,6 @@ class BackendController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     }
 
     /**
-     * action create
-     * @param Bicycle $bicycle
-     * @return void
-     */
-    public function createAction(Bicycle $bicycle)
-    {
-        // $this->bicycleRepository->add($bicycle);
-        // $this->persistenceManager->persistAll();
-        // $this->redirect('detail', null, null, ['bicycleUid' => $bicycle->getUid()]);
-    }
-
-    /**
-     * action update
-     * @param Bicycle $bicycle
-     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("bicycle")
-     * @return void
-     */
-    public function updateAction(Bicycle $bicycle)
-    {
-        // $this->bicycleRepository->update($bicycle);
-        // $this->redirect('detail', null, null, ['bicycleUid' => $bicycle->getUid()]);
-    }
-
-    public function initializeUpdateHiddenStatusAction()
-    {
-        if ($this->request->hasArgument('status')) {
-            $status = filter_var($this->request->getArgument('status'), FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
-            $this->request->setArgument('status', $status);
-        }
-
-    }
-
-    /**
-     * action update hidden status
-     * @param int $uid
-     * @param ?bool $status
-     * @return void
-     */
-    public function updateHiddenStatusAction(int $uid, ?bool $status)
-    {
-        $this->response->setHeader('Content-Type', 'application/json');
-        if ($status === null) {
-            return json_encode(['success' => false, 'message' => '"status" field empty.']);
-        }
-        $bicycle = $this->bicycleRepository->changeHiddenStatus($uid, $status);
-        if (!$bicycle) {
-            return json_encode(['success' => false, 'message' => 'error while updating hidden status.']);
-        }
-        return json_encode(['success' => true, 'message' => '', 'currentState' => $bicycle->getHidden()]);
-    }
-    /**s
      * @param ViewInterface $view
      */
     protected function initializeView(ViewInterface $view)

@@ -37,7 +37,6 @@ class Bicycle extends AbstractEntity
 
     /**
      * @var Brand
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $brand;
 

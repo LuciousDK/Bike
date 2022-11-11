@@ -71,10 +71,8 @@ class BicycleRepository extends Repository
 
     /**
      * @param int|Bicycle $bicycle
-     * @param null|bool $bicycle
+     * @param null|bool $status
      * @return Bicycle
-     * @throws \TYPO3\CMS\Core\Context\Exception\AspectNotFoundException
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
     public function changeHiddenStatus($bicycle, ?bool $status = null): ?Bicycle
     {
@@ -90,6 +88,31 @@ class BicycleRepository extends Repository
 
         $bicycle->setHidden($status);
         $this->update($bicycle);
+        return $bicycle;
+
+    }
+
+    /**
+     * @param int|Bicycle $bicycle
+     * @param array $data
+     * @return Bicycle
+     */
+    public function updateBicycleData($bicycle, array $data): ?Bicycle
+    {
+        if (is_int($bicycle)) {
+            $bicycle = $this->findByUidIncludingHidden((int) $bicycle);
+        }
+        if (!($bicycle instanceof Bicycle) || $bicycle == null) {
+            return null;
+        }
+        if ($data == null) {
+            return null;
+        }
+        foreach ($data as $key => $value) {
+
+            if (method_exists($bicycle, 'set' . ucwords($key))) {
+                $bicycle->{'set' . ucwords($key)}($value);}
+        }
         return $bicycle;
 
     }

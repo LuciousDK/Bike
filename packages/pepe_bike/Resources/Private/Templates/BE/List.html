@@ -37,12 +37,10 @@
                 </thead>
                 <tbody>
                     <f:for each="{bicycles}" as="bicycle">
-                        <f:form action="update" object="{bicycle}" objectName="bicycle" enctype="multipart/form-data"
+                        <f:form action="update" class="tablerow-edit-form"object="{bicycle}" objectName="bicycle" enctype="multipart/form-data"
                             id="bicycleform-{bicycle.uid}">
                             <tr data-object-type="bicycle" data-object-uid="{bicycle.uid}">
                                 <td>
-                                    <f:form.hidden property="uid"
-                                        additionalAttributes="{hidden:'true',form:'bicycleform-{bicycle.uid}'}" />
                                     <be:link.editRecord uid="{bicycle.uid}" class="display-field"
                                         table="tx_pepebike_domain_model_bicycle">{bicycle.model}</be:link.editRecord>
                                     <f:form.textfield property="model" class="edit-field"
@@ -54,7 +52,7 @@
                                     value="{f:if(condition: bicycle.hidden, then: ' checked', else: '')}" />
                                 <f:variable name="requestUri">
                                     <f:uri.action action="updateHiddenStatus"
-                                        arguments="{uid: bicycle.uid, status:'__status__'}" />
+                                        arguments="{bicycle:{__identity: bicycle.uid}, status:'__status__'}" />
                                 </f:variable>
                                 <td>
                                     <label class="switch">

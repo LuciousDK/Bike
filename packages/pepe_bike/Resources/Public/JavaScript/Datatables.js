@@ -40,23 +40,37 @@ define(['jquery', 'TYPO3/CMS/Core/Ajax/AjaxRequest', 'TYPO3/CMS/Backend/Notifica
     })
   })
 
-  document.querySelectorAll('.Datatables form').forEach(form => {
+  document.querySelectorAll('.Datatables .tablerow-edit-form').forEach(form => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      console.log(new FormData(e.target))
+      let formdata = new FormData(form);
+      var jsondata = {};
+      formdata.forEach((value, key) => {
+        jsondata[key] = value
+      })
 
 
-      // new AjaxRequest(TYPO3.settings.ajaxUrls.example_dosomething)
-      //   .withQueryArguments({ input: randomNumber })
-      //   .get()
-      //   .then(async function (response) {
-      //     const resolved = await response.resolve();
-      //     console.log(resolved.result);
-      //   });
+      new AjaxRequest(form.action)
+        .withQueryArguments(jsondata)
+        .get()
+        .then(async function (data) {
+          const result = await data.resolve();
+          if (result.success) {
+            Notification.success('Update Successful', 'Data Updated');
+          } else {
+            Notification.error('Error', result.message);
+          }
 
-      // let td = element.closest('td');
-      // finishEdit(td);
+          let td = e.submitter.closest('td');
+          let display = td.querySelector('.display-field');
+          let input = td.querySelector('.edit-field');
+
+          display.innerText = input.value;
+
+          finishEdit(td);
+        });
+
     })
   })
 
