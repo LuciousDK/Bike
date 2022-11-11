@@ -87,13 +87,13 @@
                                             value="{clientString}{client.firstName} {client.middleName} {client.lastName}" />
                                         <f:if condition="{iteration.isLast}">
                                             <f:else>
-                                                <f:variable name="clientString" value="{clientString}, " />
+                                                <f:variable name="clientString" value="{clientString}, </br>" />
                                             </f:else>
                                         </f:if>
                                     </f:for>
                                 </f:if>
                                 <td>
-                                    {clientString}
+                                    {clientString -> f:format.raw()}
                                 </td>
 
                             </tr>

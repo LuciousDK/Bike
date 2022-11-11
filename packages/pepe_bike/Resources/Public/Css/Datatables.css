@@ -65,3 +65,7 @@ input:checked+.slider:before {
 td:hover .field-edit-button {
     opacity: 1;
 }
+.Datatables >tbody>tr>td{
+    vertical-align: top;
+}
+
