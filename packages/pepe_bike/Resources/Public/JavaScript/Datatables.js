@@ -82,11 +82,13 @@ define(['jquery', 'TYPO3/CMS/Core/Ajax/AjaxRequest', 'TYPO3/CMS/Backend/Notifica
     let display = td.querySelector('.display-field');
     let input = td.querySelector('.edit-field');
 
-    //TODO: Disable other edit buttons
+
+    td.closest('table').querySelectorAll('.field-edit-button').forEach(
+      element => element.classList.add('hidden')
+    );
 
     cancelbtn.classList.remove('hidden');
     savebtn.classList.remove('hidden');
-    editbtn.classList.add('hidden');
     display.classList.add('hidden');
     input.value = display.innerText;
 
@@ -104,11 +106,13 @@ define(['jquery', 'TYPO3/CMS/Core/Ajax/AjaxRequest', 'TYPO3/CMS/Backend/Notifica
     let display = td.querySelector('.display-field');
     let input = td.querySelector('.edit-field');
 
-    //TODO: Enable other edit buttons
+    
+    td.closest('table').querySelectorAll('.field-edit-button').forEach(
+      element => element.classList.remove('hidden')
+    );
 
     cancelbtn.classList.add('hidden');
     savebtn.classList.add('hidden');
-    editbtn.classList.remove('hidden');
     display.classList.remove('hidden');
     input.value = display.innerText;
 
