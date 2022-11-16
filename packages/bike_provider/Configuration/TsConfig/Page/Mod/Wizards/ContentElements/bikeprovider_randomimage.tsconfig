@@ -1,0 +1,15 @@
+mod.wizards.newContentElement.wizardItems {
+   common {
+      elements {
+         bikeprovider_randomimage {
+            iconIdentifier = image
+            title = Random Image
+            description = Generates and saves a random image. To reroll save the element.
+            tt_content_defValues {
+               CType = bikeprovider_randomimage
+            }
+         }
+      }
+      show := addToList(bikeprovider_randomimage)
+   }
+}

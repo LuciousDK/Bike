@@ -1,0 +1,4 @@
+#
+# ContentElements
+#
+<INCLUDE_TYPOSCRIPT: source="DIR:EXT:bike_provider/Configuration/TsConfig/Page/Mod/Wizards/ContentElements" extensions="tsconfig">
