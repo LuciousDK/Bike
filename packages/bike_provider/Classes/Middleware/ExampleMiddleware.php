@@ -1,12 +1,10 @@
 <?php
-namespace Luat\PepeBike\Middleware;
+namespace Luat\BikeProvider\Middleware;
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Frontend\Controller\ErrorController;
 
 class ExampleMiddleware implements MiddlewareInterface
 {
