@@ -24,7 +24,7 @@ const htmlPluginEntries = templateFiles.map((template) => new HTMLWebpackPlugin(
   hash: false,
   filename: template.output,
   template: path.resolve(environment.paths.source, template.input),
-  favicon: path.resolve(environment.paths.source, 'images', 'favicon.ico'),
+  favicon: path.resolve(environment.paths.source, 'Images', 'favicon.ico'),
 }));
 
 module.exports = {
@@ -32,7 +32,7 @@ module.exports = {
     app: path.resolve(environment.paths.source, 'js', 'app.js'),
   },
   output: {
-    filename: 'js/[name].js',
+    filename: 'Js/[name].js',
     path: environment.paths.output,
   },
   module: {
@@ -55,7 +55,7 @@ module.exports = {
           },
         },
         generator: {
-          filename: 'images/[name].[hash:6][ext]',
+          filename: 'Images/[name].[hash:6][ext]',
         },
       },
       {
@@ -67,7 +67,7 @@ module.exports = {
           },
         },
         generator: {
-          filename: 'fonts/[name].[hash:6][ext]',
+          filename: 'Fonts/[name].[hash:6][ext]',
         },
       },
     ],
@@ -105,16 +105,12 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
+      filename: 'Css/[name].css',
     }),
-    new SVGSpritemapPlugin([path.resolve(environment.paths.source, 'icons/*.svg')], {
-      input: {
-        options: {
+    new SVGSpritemapPlugin([path.resolve(environment.paths.source, 'Icons')+ '/*-sprite.svg'], {
 
-        },
-      },
       styles: {
-        filename: 'src/scss/resources/_icons.scss',
+        filename: 'src/Scss/resources/_icons.scss',
         format: 'data',
         keepAttributes: true,
         variables: {
@@ -129,19 +125,23 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: path.resolve(environment.paths.source, 'images'),
-          to: path.resolve(environment.paths.output, 'images'),
+          from: path.resolve(environment.paths.source, 'Images'),
+          to: path.resolve(environment.paths.output, 'Images'),
           toType: 'dir',
-          globOptions: {
-            ignore: ['*.DS_Store', 'Thumbs.db'],
-          },
         },
         {
-          from: path.resolve(environment.paths.source, 'videos'),
-          to: path.resolve(environment.paths.output, 'videos'),
+          from: path.resolve(environment.paths.source, 'Videos'),
+          to: path.resolve(environment.paths.output, 'Videos'),
+          toType: 'dir',
+        },
+        {
+          from: path.resolve(environment.paths.source, 'Icons'),
+          to: path.resolve(environment.paths.output, 'Icons'),
           toType: 'dir',
           globOptions: {
-            ignore: ['*.DS_Store', 'Thumbs.db'],
+            ignore: [
+              "**/*-sprite.svg",
+            ],
           },
         },
       ],
