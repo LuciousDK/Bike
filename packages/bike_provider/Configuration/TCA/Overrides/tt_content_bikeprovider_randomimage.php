@@ -7,6 +7,7 @@ call_user_func(function () {
             'label' => 'Image Url',
             'config' => [
                 'type' => 'input',
+                'renderType' => 'inputLink',
                 'readOnly' => true,
                 'size' => 100,
             ],

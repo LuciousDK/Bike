@@ -17,3 +17,7 @@ $iconRegistry->registerIcon(
     \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
     ['source' => 'EXT:bike_provider/Resources/Public/Icons/image.svg']
 );
+
+// Register for hook to show preview of tt_content element of CType="bikeprovider_randomimage" in page module
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms/layout/class.tx_cms_layout.php']['tt_content_drawItem']['bikeprovider_randomimage'] =
+\Luat\BikeProvider\Hooks\PageLayoutView\RandomImagePreviewRenderer::class;
