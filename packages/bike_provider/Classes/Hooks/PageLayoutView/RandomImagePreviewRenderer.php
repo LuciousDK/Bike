@@ -17,11 +17,11 @@ class RandomImagePreviewRenderer implements PageLayoutViewDrawItemHookInterface
      * @param array $row Record row of tt_content
      */
     public function preProcess(
-        PageLayoutView&$parentObject,
+        PageLayoutView &$parentObject,
         &$drawItem,
         &$headerContent,
         &$itemContent,
-        array&$row
+        array &$row
     ) {
         if ($row['CType'] === 'bikeprovider_randomimage') {
             if ($row['tx_bikeprovider_generatedurl']) {
