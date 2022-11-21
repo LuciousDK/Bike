@@ -1,0 +1,6 @@
+tt_content {
+    bikeprovider_randomimage =< lib.contentElement
+    bikeprovider_randomimage {
+        templateName = RandomImage
+    }
+}
