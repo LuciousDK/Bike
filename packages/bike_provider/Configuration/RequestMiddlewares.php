@@ -1,8 +1,8 @@
 <?php 
 return [
     'backend' => [
-        'middleware-identifier' => [
-            'target' => \Luat\BikeProvider\Middleware\ExampleMiddleware::class,
+        'random-image-source-generator' => [
+            'target' => \Luat\BikeProvider\Middleware\RandomImageSourceGenerator::class,
         ],
     ],
 ];
