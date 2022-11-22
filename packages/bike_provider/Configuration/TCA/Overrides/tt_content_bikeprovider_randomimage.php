@@ -53,6 +53,6 @@ call_user_func(function () {
     // Configure the default backend fields for the content element
     $GLOBALS['TCA']['tt_content']['palettes']['bikeprovider_randomimage']['showitem'] = 'tx_bikeprovider_width,tx_bikeprovider_height';
     
-    $GLOBALS['TCA']['tt_content']['types']['bikeprovider_randomimage']['previewRenderer'] = \Luat\BikeProvider\Hooks\PageLayoutView\RandomImageFluidPreviewRenderer::class;
+    $GLOBALS['TCA']['tt_content']['types']['bikeprovider_randomimage']['previewRenderer'] = \Luat\BikeProvider\Preview\RandomImageFluidPreviewRenderer::class;
 
 });

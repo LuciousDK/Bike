@@ -1,6 +1,6 @@
 <?php
 declare (strict_types = 1);
-namespace Luat\BikeProvider\Hooks\PageLayoutView;
+namespace Luat\BikeProvider\Preview;
 
 use TYPO3\CMS\Backend\View\BackendLayout\Grid\GridColumnItem;
 
