@@ -13,3 +13,5 @@
     'Bike API',
     'pepe-bike'
 );
+
+$GLOBALS['TCA']['tt_content']['types']['list']['previewRenderer']['pepebike_list'] = \Luat\PepeBike\Preview\ListPreviewRenderer::class;
