@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>General</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.title>
+                        <TCEforms>
+                            <label>Title</label>
+                            <config>
+                                <type>input</type>
+                            </config>
+                        </TCEforms>
+                    </settings.title>
+                    <settings.showFilters>
+                        <TCEforms>
+                            <label>Filters</label>
+                            <config>
+                                <type>radio</type>
+                                <default>null</default>
+                                <items type="array">
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">None</numIndex>
+                                        <numIndex index="1">null</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1" type="array">
+                                        <numIndex index="0">Dropdown</numIndex>
+                                        <numIndex index="1">dropdown</numIndex>
+                                    </numIndex>
+                                    <numIndex index="2" type="array">
+                                        <numIndex index="0">Tabs</numIndex>
+                                        <numIndex index="1">tabs</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.showFilters>
+                    <settings.brandFilter>
+                        <TCEforms>
+                            <label>Brand</label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectSingle</renderType>
+                                <items>
+                                    <numIndex index="0">
+                                        <numIndex index="0">
+                                            Select a Brand
+                                        </numIndex>
+                                        <numIndex index="1">--div--</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1">
+                                        <numIndex index="0">
+                                            All
+                                        </numIndex>
+                                        <numIndex index="1">-1</numIndex>
+                                    </numIndex>
+                                </items>
+                                <foreign_table>tx_pepebike_domain_model_brand</foreign_table>
+                                <foreign_table_where>ORDER BY name</foreign_table_where>
+                            </config>
+                        </TCEforms>
+                    </settings.brandFilter>
+                    <settings.clientFilter>
+                        <TCEforms>
+                            <label>Client</label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectCheckBox</renderType>
+                                <items></items>
+                                <itemsProcFunc>Luat\PepeBike\Backend\ItemsProcFunc->clientOptions
+                                </itemsProcFunc>
+                            </config>
+                        </TCEforms>
+                    </settings.clientFilter>
+                </el>
+            </ROOT>
+
+        </sDEF>
+    </sheets>
+</T3DataStructure>

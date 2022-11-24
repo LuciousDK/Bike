@@ -15,3 +15,9 @@
 );
 
 $GLOBALS['TCA']['tt_content']['types']['list']['previewRenderer']['pepebike_list'] = \Luat\PepeBike\Preview\ListPreviewRenderer::class;
+
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['pepebike_list'] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
+    'pepebike_list',
+    'FILE:EXT:pepebike/Configuration/FlexForms/List.xml'
+);
