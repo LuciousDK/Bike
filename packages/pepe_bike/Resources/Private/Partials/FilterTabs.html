@@ -1,0 +1,21 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:bike="http://typo3.org/ns/Luat/BikeProvider/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:debug>{_all}</f:debug>
+<bike:StringToArray string="{clientFilter}" as="clientFilter" />
+<bike:StringToArray string="{brandFilter}" as="brandFilter" />
+
+<div class="m-bicyclelist__tabs">
+    <f:for each="{brands}" as="brand">
+        <f:if condition="{bike:ValueInArray(value:'{brand.uid}',array:'{brandFilter}')}">
+            <f:then>
+                <span>
+                    {brand.name}</span>
+            </f:then>
+            <f:else>
+
+                <f:link.action class="m-bicyclelist__bicycle" arguments="{brandUid: brand.uid}">
+                    {brand.name}</f:link.action>
+            </f:else>
+        </f:if>
+    </f:for>
+</div>

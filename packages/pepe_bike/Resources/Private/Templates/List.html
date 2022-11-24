@@ -1,10 +1,31 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
     xmlns:pepe="http://typo3.org/ns/Luat/PepeBike/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:if condition="{brandFilter}">
+    <f:else>
+        <f:variable name="brandFilter">{settings.brandFilter}</f:variable>
+    </f:else>
+</f:if>
+<f:if condition="{clientFilter}">
+    <f:else>
+        <f:variable name="clientFilter">{settings.clientFilter}</f:variable>
+    </f:else>
+</f:if>
 
-<pepe:widget.filter objects="{1:'pepe'}" />
+
 <div class="m-bicyclelist">
     <div class="container">
         <div class="row">
+            <f:if condition="{settings.showFilters} != 'null'">
+                <f:switch expression="{settings.showFilters}">
+                    <f:case value="dropdown"></f:case>
+                    <f:case value="tabs">
+                        <f:render partial="filterTabs"
+                            arguments="{brands: brands, brandFilter: brandFilter, clients: clients, clientFilter: clientFilter}" />
+                    </f:case>
+                    <f:defaultCase></f:defaultCase>
+                </f:switch>
+            </f:if>
+            <div class="m-bicyclelist__filters"></div>
             <div class="m-bicyclelist__bicycles">
                 <f:widget.paginate objects="{bicycles}" as="paginatedBicycles">
                     <f:for each="{paginatedBicycles}" as="bicycle">

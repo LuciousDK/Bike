@@ -103,6 +103,11 @@ class MainController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         $clients = $this->clientRepository->findAll();
         $this->view->assign('clients', $clients);
+
+        if ($this->request->hasArgument('brandUid')) {
+
+            $this->view->assign('brandFilter', $this->request->getArgument('brandUid'));
+        }
     }
 
     /**
@@ -122,13 +127,12 @@ class MainController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
             $this->throwStatus(404, 'Bad Request', 'No bicycle found with uid "' . $uid . '"');
         }
 
-
         $brands = $this->brandRepository->findAll();
         $this->view->assign('brands', $brands);
 
         $clients = $this->clientRepository->findAll();
         $this->view->assign('clients', $clients);
-        
+
         $this->view->assign('bicycle', $bicycle);
     }
     /**
