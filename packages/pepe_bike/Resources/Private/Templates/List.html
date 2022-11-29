@@ -26,13 +26,24 @@
             </f:if>
             <div class="m-bicyclelist__filters"></div>
             <div class="m-bicyclelist__bicycles">
-                <f:widget.paginate objects="{bicycles}" as="paginatedBicycles">
-                    <f:for each="{paginatedBicycles}" as="bicycle">
-                        <f:link.action action="detail" class="m-bicyclelist__bicycle"
-                            arguments="{bicycleUid:bicycle.uid}">
-                            {bicycle.model}</f:link.action>
-                    </f:for>
-                </f:widget.paginate>
+                <f:if condition="{settings.paginate}">
+                    <f:then>
+                        <f:widget.paginate objects="{bicycles}" as="paginatedBicycles">
+                            <f:for each="{paginatedBicycles}" as="bicycle">
+                                <f:link.action action="detail" class="m-bicyclelist__bicycle"
+                                    arguments="{bicycleUid:bicycle.uid}">
+                                    {bicycle.model}</f:link.action>
+                            </f:for>
+                        </f:widget.paginate>
+                    </f:then>
+                    <f:else>
+                        <f:for each="{bicycles}" as="bicycle">
+                            <f:link.action action="detail" class="m-bicyclelist__bicycle"
+                                arguments="{bicycleUid:bicycle.uid}">
+                                {bicycle.model}</f:link.action>
+                        </f:for>
+                    </f:else>
+                </f:if>
             </div>
             <f:form action="create" controller="Main" objectName="bicycle" method="post">
                 <fieldset>

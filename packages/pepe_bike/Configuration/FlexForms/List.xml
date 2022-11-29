@@ -76,6 +76,24 @@
                             </config>
                         </TCEforms>
                     </settings.clientFilter>
+                    <settings.paginate>
+                        <TCEforms>
+                            <label>Paginate</label>
+                            <config>
+                                <type>check</type>
+                                <items type="array">
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">1</numIndex>
+                                        <numIndex index="1">1</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1" type="array">
+                                        <numIndex index="0">2</numIndex>
+                                        <numIndex index="1">2</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.paginate>
                 </el>
             </ROOT>
 
