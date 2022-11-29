@@ -103,12 +103,16 @@ class MainController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('clients', $clients);
 
         $bicycles = $this->bicycleRepository->findAll();
-        if ($this->request->hasArgument('brandUid')) {
 
-            $this->view->assign('brandFilter', $this->request->getArgument('brandUid'));
-            $bicycles = $this->bicycleRepository->findAllByBrand($this->request->getArgument('brandUid'));
+        $brandFilter = $this->request->hasArgument('brandUid') ?
+
+        $this->request->getArgument('brandUid') : $this->settings['brandFilter'];
+
+        if ($brandFilter != '-1') {
+            $bicycles = $this->bicycleRepository->findAllByBrand($brandFilter);
         }
 
+        $this->view->assign('brandFilter', $brandFilter);
         $this->view->assign('bicycles', $bicycles);
 
     }

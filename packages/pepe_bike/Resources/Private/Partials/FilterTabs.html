@@ -5,6 +5,16 @@
 <bike:StringToArray string="{brandFilter}" as="brandFilter" />
 
 <div class="m-bicyclelist__tabs">
+    <f:debug>{_all}</f:debug>
+    <f:if condition="{brandFilter.0} != '-1'">
+        <f:then>
+            <f:link.action class="m-bicyclelist__bicycle" arguments="{brandUid: '-1'}">
+                All</f:link.action>
+        </f:then>
+        <f:else>
+            <span>All</span>
+        </f:else>
+    </f:if>
     <f:for each="{brands}" as="brand">
         <f:if condition="{bike:ValueInArray(value:'{brand.uid}',array:'{brandFilter}')}">
             <f:then>
@@ -13,7 +23,7 @@
             </f:then>
             <f:else>
 
-                <f:link.action class="m-bicyclelist__bicycle" arguments="{brandUid: brand.uid}" >
+                <f:link.action class="m-bicyclelist__bicycle" arguments="{brandUid: brand.uid}">
                     {brand.name}</f:link.action>
             </f:else>
         </f:if>
