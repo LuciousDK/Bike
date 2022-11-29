@@ -95,8 +95,6 @@ class MainController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function listAction(Bicycle $bicycle = null)
     {
-        $bicycles = $this->bicycleRepository->findAll();
-        $this->view->assign('bicycles', $bicycles);
 
         $brands = $this->brandRepository->findAll();
         $this->view->assign('brands', $brands);
@@ -104,10 +102,15 @@ class MainController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $clients = $this->clientRepository->findAll();
         $this->view->assign('clients', $clients);
 
+        $bicycles = $this->bicycleRepository->findAll();
         if ($this->request->hasArgument('brandUid')) {
 
             $this->view->assign('brandFilter', $this->request->getArgument('brandUid'));
+            $bicycles = $this->bicycleRepository->findAllByBrand($this->request->getArgument('brandUid'));
         }
+
+        $this->view->assign('bicycles', $bicycles);
+
     }
 
     /**

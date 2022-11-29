@@ -10,18 +10,26 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 class BicycleRepository extends Repository
 {
     /**
-     * @param Brand $brand
+     * @param int|string|Brand $brand
      * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      * @throws \TYPO3\CMS\Core\Context\Exception\AspectNotFoundException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
-    public function findAllByBrand(Brand $brand)
+    public function findAllByBrand($brand)
     {
+        if ($brand instanceof Brand) {
+            $brandUid = $brand->getUid();
+        } else {
+
+            $brandUid = $brand;
+        }
         $query = $this->createQuery();
-        $constraints = [];
-        $constraints[] = $query->equals('brand', $brand->getUid());
-        $constraints = $this->fillConstraintsBySettings($query, $constraints);
-        return $query->matching($query->logicalAnd($constraints))->execute();
+        $query->matching(
+            $query->logicalAnd(
+                $query->equals('brand', $brandUid),
+            )
+        );
+        return $query->execute();
     }
 
     /**
