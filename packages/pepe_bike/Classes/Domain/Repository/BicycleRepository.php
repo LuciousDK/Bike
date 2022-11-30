@@ -25,10 +25,10 @@ class BicycleRepository extends Repository
         }
         $query = $this->createQuery();
         $query->matching(
-            $query->logicalAnd(
-                $query->equals('brand', $brandUid),
-            )
+            $query->equals('brand', $brandUid),
+
         );
+
         return $query->execute();
     }
 

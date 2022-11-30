@@ -23,6 +23,7 @@
 		}
 	},
 	"require": {
+		"georgringer/news": "^10.0",
 		"helhum/dotenv-connector": "^3.0",
 		"helhum/typo3-console": "^6.0.0",
 		"luat/bike-provider": "^1.0",

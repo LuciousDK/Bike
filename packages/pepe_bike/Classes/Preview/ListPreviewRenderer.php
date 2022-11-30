@@ -2,11 +2,22 @@
 declare (strict_types = 1);
 namespace Luat\PepeBike\Preview;
 
+use Luat\PepeBike\Domain\Repository\BrandRepository;
+use Luat\PepeBike\Domain\Repository\ClientRepository;
 use TYPO3\CMS\Backend\View\BackendLayout\Grid\GridColumnItem;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use \TYPO3\CMS\Core\Service\FlexFormService;
 
 class ListPreviewRenderer implements \TYPO3\CMS\Backend\Preview\PreviewRendererInterface
 
 {
+    /**
+     * Flexform information
+     *
+     * @var array
+     */
+    public $flexformData = [];
+
     /**
      * Dedicated method for rendering preview header HTML for
      * the page module only. Receives $item which is an instance of
@@ -31,10 +42,24 @@ class ListPreviewRenderer implements \TYPO3\CMS\Backend\Preview\PreviewRendererI
      */
     public function renderPageModulePreviewContent(GridColumnItem $item): string
     {
+        $flexformService = GeneralUtility::makeInstance(FlexFormService::class);
+        // $brandRepository = GeneralUtility::makeInstance(BrandRepository::class);
+        // $clientRepository = GeneralUtility::makeInstance(ClientRepository::class);
+        $this->flexformData = $flexformService->convertFlexFormContentToArray($item->getRecord()['pi_flexform']);
+        // $brand = $brandRepository->findByUid($this->flexformData['settings']['brandFilter']);
         $record = $item->getRecord();
         $itemContent =
-            '<div>
+        '<div>
                 <b>Plugin: </b>' . $record['list_type'] .
+        '</div>
+            <div>
+                <b>Filters: </b>' . $this->flexformData['settings']['showFilters'] .
+        '</div>
+            <div>
+                <b>Selected Brand: </b>' . $this->flexformData['settings']['brandFilter'] .
+        '</div>
+            <div>
+                <b>Selected Clients: </b>' . $this->flexformData['settings']['clientFilter'] .
             '</div>
             <div>
                 <b>Starting Point: </b>' . $record['pages'] .
@@ -73,4 +98,5 @@ class ListPreviewRenderer implements \TYPO3\CMS\Backend\Preview\PreviewRendererI
             $previewContent .
             '</div>';
     }
+
 }
