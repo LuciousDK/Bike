@@ -17,7 +17,16 @@ class RandomImageSourceGenerator implements MiddlewareInterface
             $parsedBody = $request->getParsedBody();
 
             foreach ($parsedBody["data"]["tt_content"] as $key => $element) {
-                $sourceUrl = $this->getRedirectUrl($this::API . '/' . $element['tx_bikeprovider_width'] . '/' . $element['tx_bikeprovider_height']);
+
+                // Get Source Url Through API Call
+                // $sourceUrl = $this->getRedirectUrl($this::API . '/' . $element['tx_bikeprovider_width'] . '/' . $element['tx_bikeprovider_height']);
+
+
+                // Get Source Url with random image id;
+                // Lorem Picsum has up to 1084 ids.
+                $imageId = rand(1, 1084);
+                $sourceUrl = $this::API . '/id/' . $imageId . '/' . $element['tx_bikeprovider_width'] . '/' . $element['tx_bikeprovider_height'];
+
 
                 $parsedBody["data"]["tt_content"][$key]['tx_bikeprovider_generatedurl'] = $sourceUrl;
 
