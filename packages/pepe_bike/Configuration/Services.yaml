@@ -6,3 +6,45 @@ services:
         description: 'Sends Email'
         schedulable: true
         hidden: false
+        
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  cache.dashboard.rss:
+    class: 'TYPO3\CMS\Core\Cache\Frontend\FrontendInterface'
+    factory: ['@TYPO3\CMS\Core\Cache\CacheManager', 'getCache']
+    arguments:
+      $identifier: 'dashboard_rss'
+  
+  dashboard.views.widget:
+    class: 'TYPO3\CMS\Fluid\View\StandaloneView'
+    public: true
+    factory: ['TYPO3\CMS\Dashboard\Views\Factory', 'widgetTemplate']
+  
+
+  dashboard.buttons.pepebike:
+    class: 'Luat\PepeBike\Widgets\ButtonProvider'
+    arguments:
+      $title: 'Button title'
+      $link: 'https://typo3.org/project/news'
+      $target: '_blank'
+
+  dashboard.widget.pepebike:
+    class: 'Luat\PepeBike\Widgets\BikeListWidget'
+    arguments:
+      $view: '@dashboard.views.widget'
+      $cache: '@cache.dashboard.rss'
+      $buttonProvider: '@dashboard.buttons.pepebike'
+      $options:
+        feedUrl: 'https://typo3.org/rss'
+    tags:
+      - name: dashboard.widget
+        identifier: 'bikelist'
+        groupNames: 'general,news'
+        title: 'Bike List'
+        description: 'List of Bikes'
+        iconIdentifier: 'content-widget-rss'
+        height: 'large'
+        width: 'medium'
