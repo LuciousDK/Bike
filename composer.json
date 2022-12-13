@@ -29,6 +29,7 @@
 		"luat/bike-provider": "^1.0",
 		"luat/pepebike": "^1.0",
 		"typo3/cms-about": "^10.4.0",
+		"typo3/cms-adminpanel": "^10.4.0",
 		"typo3/cms-backend": "^10.4.0",
 		"typo3/cms-belog": "^10.4.0",
 		"typo3/cms-beuser": "^10.4.0",
