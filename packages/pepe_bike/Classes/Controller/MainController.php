@@ -8,6 +8,8 @@ use Luat\PepeBike\Domain\Model\Bicycle;
 use Luat\PepeBike\Domain\Repository\BicycleRepository;
 use Luat\PepeBike\Domain\Repository\BrandRepository;
 use Luat\PepeBike\Domain\Repository\ClientRepository;
+use Luat\PepeBike\PageTitle\PageTitleProvider;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use TYPO3\CMS\Extbase\Property\PropertyMapper;
 use TYPO3\CMS\Extbase\Property\PropertyMappingConfigurationBuilder;
@@ -133,7 +135,8 @@ class MainController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         if (!$bicycle) {
             $this->throwStatus(404, 'Bad Request', 'No bicycle found with uid "' . $uid . '"');
         }
-
+        $titleProvider = GeneralUtility::makeInstance(PageTitleProvider::class);
+        $titleProvider->setTitle($bicycle->getModel());
         $brands = $this->brandRepository->findAll();
         $this->view->assign('brands', $brands);
 

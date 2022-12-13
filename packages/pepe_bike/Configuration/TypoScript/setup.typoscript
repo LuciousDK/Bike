@@ -40,3 +40,10 @@ module.tx_pepebike {
         }
     }
 }
+
+config.pageTitleProviders {
+   bike {
+      provider = Luat\PepeBike\PageTitle\PageTitleProvider
+      before = record
+   }
+}
