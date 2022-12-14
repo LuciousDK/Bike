@@ -1,0 +1,22 @@
+/*!******************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/Scss/rte.scss ***!
+  \******************************************************************************************************************************************************/
+body {
+  font-size: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5em;
+}
+
+h1 {
+  font-size: 2.5em;
+  line-height: 2.75em;
+}
+
+h2 {
+  font-size: 1.875em;
+  line-height: 2.2em;
+}
+
+p {
+  font-size: 0.875em;
+}

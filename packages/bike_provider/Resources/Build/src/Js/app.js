@@ -1,5 +1,3 @@
-import '../scss/app.scss';
-
 var cache = {};
 
 //load all js modules
