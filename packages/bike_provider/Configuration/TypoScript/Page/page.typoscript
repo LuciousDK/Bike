@@ -130,7 +130,7 @@ page {
     }
 
     includeCSS {
-        bike_provider_layout = EXT:bike_provider/Resources/Public/css/app.css
+        bike_provider_layout = EXT:bike_provider/Resources/Public/Css/app.css
     }
 
     includeJSLibs {
