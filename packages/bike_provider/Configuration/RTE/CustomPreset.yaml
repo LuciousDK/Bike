@@ -2,9 +2,18 @@ imports:
     - { resource: "EXT:rte_ckeditor/Configuration/RTE/Processing.yaml" }
     - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Base.yaml" }
     - { resource: "EXT:rte_ckeditor/Configuration/RTE/Editor/Plugins.yaml" }
+    - { resource: "EXT:rte_ckeditor_image/Configuration/RTE/Plugin.yaml" }
 
 editor:
+
+    externalPlugins:
+        codesnippet:
+            resource: 'EXT:bike_provider/Resources/Public/CKEditor/codesnippet/'
+        typo3image:
+            allowedExtensions: "jpg,jpeg,png,svg"
+
     config:
+
         contentsCss: "EXT:bike_provider/Resources/Public/Css/rte.css"
 
         stylesSet:
@@ -33,9 +42,8 @@ editor:
         extraPlugins:
             - justify
 
-        removePlugins:
-            - image
-
+        removePlugins: null
+        
         removeButtons:
             - Anchor
             - Underline

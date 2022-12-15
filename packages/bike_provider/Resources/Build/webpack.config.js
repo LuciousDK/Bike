@@ -136,6 +136,11 @@ module.exports = {
           toType: 'dir',
         },
         {
+          from: path.resolve(environment.paths.source, 'CKEditor'),
+          to: path.resolve(environment.paths.output, 'CKEditor'),
+          toType: 'dir',
+        },
+        {
           from: path.resolve(environment.paths.source, 'Icons'),
           to: path.resolve(environment.paths.output, 'Icons'),
           toType: 'dir',
