@@ -10,6 +10,7 @@ editor:
         codesnippet:
             resource: 'EXT:bike_provider/Resources/Public/CKEditor/codesnippet/'
         typo3image:
+            resource: 'EXT:bike_provider/Resources/Public/CKEditor/typo3image/'
             allowedExtensions: "jpg,jpeg,png,svg"
 
     config:
