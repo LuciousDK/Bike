@@ -1,0 +1,6 @@
+lib.parseFunc_RTE {
+    // default class for images in bodytext:
+    nonTypoTagStdWrap.HTMLparser.tags.img.fixAttrib.class {
+      default = pepe-image
+    }
+}

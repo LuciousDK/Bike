@@ -13,6 +13,10 @@ styles {
         partialRootPath = EXT:bike_provider/Resources/Private/Partials/ContentElements/
         templateRootPath = EXT:bike_provider/Resources/Private/Templates/ContentElements/
     }
+    content {
+        textmedia.linkWrap.lightboxEnabled = 0
+        image.lazyLoading = lazy
+    }
 }
 
 

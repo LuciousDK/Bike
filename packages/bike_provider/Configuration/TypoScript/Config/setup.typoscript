@@ -38,3 +38,8 @@ config {
         }
     }
 }
+
+RTE.default.buttons.image.options.magic {
+    maxWidth = 1020
+    maxHeight = 800
+}

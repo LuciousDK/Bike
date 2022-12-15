@@ -3,12 +3,13 @@
 ######################
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:fluid_styled_content/Configuration/TypoScript/setup.typoscript">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:pepebike/Configuration/TypoScript/setup.typoscript">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:rte_ckeditor_image/Configuration/TypoScript/ImageRendering/setup.txt">
 
 
 ################
 #### HELPER ####
 ################
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bike_provider/Configuration/TypoScript/Helper/DynamicContent.typoscript">
+<INCLUDE_TYPOSCRIPT: source="DIR:EXT:bike_provider/Configuration/TypoScript/Helper" extensions="typoscript">
 
 ##########################
 #### CONTENT ELEMENTS ####
