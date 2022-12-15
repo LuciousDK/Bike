@@ -26,8 +26,9 @@
 		"georgringer/news": "^10.0",
 		"helhum/dotenv-connector": "^3.0",
 		"helhum/typo3-console": "^6.0.0",
-		"luat/bike-provider": "^1.0",
-		"luat/pepebike": "^1.0",
+		"luat/bike-provider": "dev-develop",
+		"luat/pepebike": "dev-develop",
+		"netresearch/rte-ckeditor-image": "^10.0",
 		"typo3/cms-about": "^10.4.0",
 		"typo3/cms-adminpanel": "^10.4.0",
 		"typo3/cms-backend": "^10.4.0",
@@ -57,6 +58,7 @@
 		"typo3/cms-tstemplate": "^10.4.0",
 		"typo3/cms-viewpage": "^10.4.0"
 	},
+	"minimum-stability": "dev",
 	"scripts":{
 		"prepare-files": [
 			"if [ ! -f .env ]; then cp default.env .env; fi",

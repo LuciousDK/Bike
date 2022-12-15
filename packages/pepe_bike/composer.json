@@ -1,7 +1,6 @@
 {
 	"name": "luat/pepebike",
 	"type": "typo3-cms-extension",
-	"version": "1.0.0",
 	"description": "",
 	"homepage": "https://bike.ddev.site/",
 	"authors": [
