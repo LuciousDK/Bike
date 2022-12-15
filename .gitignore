@@ -13,3 +13,4 @@ nbproject
 db
 .env
 packages/bike_provider/Resources/Build/node_modules
+packages/bike_provider/Resources/Public
