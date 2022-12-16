@@ -27,19 +27,7 @@ config.tx_extbase {
     }
 }
 
-module.tx_pepebike {
-    view {
-        templateRootPaths {
-            0 = EXT:pepebike/Resources/Private/Templates/BE/
-        }
-        partialRootPaths {
-            0 = EXT:pepebike/Resources/Private/Partials/BE/
-        }
-        layoutRootPaths {
-            0 = EXT:pepebike/Resources/Private/Layouts/BE/
-        }
-    }
-}
+module.tx_pepebike.view < plugin.tx_pepebike.view
 
 config.pageTitleProviders {
    bike {
