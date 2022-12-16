@@ -9,28 +9,45 @@ errorHandling:
     errorFluidPartialsRootPath: ''
 languages:
   -
-    title: English
+    title: Deutsch
     enabled: true
     languageId: 0
     base: /
-    typo3Language: default
+    typo3Language: de
     locale: de_DE.UTF-8
     iso-639-1: de
-    navigationTitle: English
+    navigationTitle: Deutsch
     hreflang: de-de
     direction: ltr
     flag: de
-    websiteTitle: ''
+    websiteTitle: 'German Site'
+  -
+    title: English
+    enabled: true
+    languageId: 1
+    base: /en
+    typo3Language: default
+    locale: en_US.UTF-8
+    iso-639-1: en
+    navigationTitle: English
+    hreflang: en-us
+    direction: ltr
+    flag: en-us-gb
+    websiteTitle: 'English Site'
+    fallbackType: strict
+    fallbacks: ''
 rootPageId: 1
-websiteTitle: ''
 routeEnhancers:
   api:
     type: Extbase
     extension: Pepebike
     plugin: Api
     routes:
-      - routePath: '/{object}'
+      -
+        routePath: '/{object}'
         _controller: 'Json::list'
-      - routePath: '/{object}/{id}'
+      -
+        routePath: '/{object}/{id}'
         _controller: 'Json::list'
     defaultController: 'Json::list'
+websiteTitle: ''
