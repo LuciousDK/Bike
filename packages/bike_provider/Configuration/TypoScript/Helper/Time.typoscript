@@ -1,0 +1,4 @@
+lib.time  = USER_INT
+lib.time {
+    userFunc = Luat\BikeProvider\Backend\CurrentTime->printTime
+}

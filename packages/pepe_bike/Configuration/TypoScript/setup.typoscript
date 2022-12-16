@@ -1,3 +1,5 @@
+<INCLUDE_TYPOSCRIPT: source="DIR:EXT:pepebike/Configuration/TypoScript/ContentObject" extensions="typoscript">
+
 plugin.tx_pepebike {
     view {
         templateRootPaths {

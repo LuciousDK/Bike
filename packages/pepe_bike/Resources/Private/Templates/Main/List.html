@@ -38,6 +38,10 @@
                     </f:then>
                     <f:else>
                         <f:for each="{bicycles}" as="bicycle">
+                            <f:comment>
+                                <f:cObject typoscriptObjectPath="lib.bicycleData" data="{bicycle}"
+                                    currentValueKey="wheels" />
+                            </f:comment>
                             <f:link.action action="detail" class="m-bicyclelist__bicycle"
                                 arguments="{bicycleUid:bicycle.uid}">
                                 {bicycle.model}</f:link.action>

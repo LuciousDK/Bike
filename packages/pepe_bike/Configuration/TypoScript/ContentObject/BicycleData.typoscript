@@ -1,0 +1,6 @@
+lib.bicycleData = COA
+lib.bicycleData {
+    10 = TEXT
+    10.field = wheels
+    10.current = 1
+}
