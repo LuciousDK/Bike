@@ -2,7 +2,6 @@
 namespace Luat\BikeProvider\Backend;
 
 use IntlDateFormatter;
-use Locale;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -27,7 +26,7 @@ class CurrentTime
         /** @var TYPO3\CMS\Core\Site\Entity\SiteLanguage */
         $language = $site->getLanguageById($langId);
         $langCode = $language->getLocale();
-        
+
         $formatter = new IntlDateFormatter($langCode, IntlDateFormatter::FULL, IntlDateFormatter::NONE);
         return $formatter->format(time());
     }

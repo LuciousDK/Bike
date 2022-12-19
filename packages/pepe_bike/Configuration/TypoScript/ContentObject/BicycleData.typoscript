@@ -4,3 +4,38 @@ lib.bicycleData {
     10.field = wheels
     10.current = 1
 }
+
+lib.stuff = CASE
+
+
+# This value determines, which of the following cObjects will be rendered.
+lib.stuff.if {
+    # Checks if the field "wheels" inside the object is greater than the "value"
+    value = 1
+    isGreaterThan.field = wheels
+
+    # Checks if the field "brand" is set 
+    isTrue.field = brand
+
+    # Inverts result
+    negate = 0
+}
+
+lib.stuff.key.field = wheels
+
+# cObject for the case that field layout is "1".
+lib.stuff.1 = TEXT
+lib.stuff.1 {
+    value = one wheel
+}
+lib.stuff.2 = TEXT
+lib.stuff.2 {
+    value = two wheels
+}
+# cObject for all other cases.
+lib.stuff.default = TEXT
+lib.stuff.default {
+    value = default
+}
+
+lib.stuff.stdWrap.wrap = <strong>|</strong>
