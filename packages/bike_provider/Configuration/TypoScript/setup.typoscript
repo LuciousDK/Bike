@@ -19,7 +19,8 @@
 ##############
 #### PAGE ####
 ##############
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:bike_provider/Configuration/TypoScript/Page/page.typoscript">
+<INCLUDE_TYPOSCRIPT: source="DIR:EXT:bike_provider/Configuration/TypoScript/Page/Elements" extensions="typoscript">
+<INCLUDE_TYPOSCRIPT: source="DIR:EXT:bike_provider/Configuration/TypoScript/Page" extensions="typoscript">
 
 ################
 #### CONFIG ####

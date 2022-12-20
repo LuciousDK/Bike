@@ -152,22 +152,8 @@ page {
 }
 
 page{
-
-    1 = TEXT
-    1 {
-        value = Login
-        typolink.parameter = 8
-    }
+    1 < lib.header
 }
-
-[loginUser('*')]
-    page{
-        1 {
-            value = Logout
-            typolink.additionalParams = &logintype=logout
-        }
-    }
-[end]
 
 [!frontend.user.isLoggedIn  && page["uid"] != 8]
 page.config >

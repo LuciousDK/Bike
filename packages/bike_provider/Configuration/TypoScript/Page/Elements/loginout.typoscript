@@ -1,0 +1,19 @@
+lib.loginout = TEXT
+lib.loginout {
+    value = Login
+    typolink.parameter = 8
+}
+
+[frontend.user.isLoggedIn]
+
+lib.loginout {
+    value = Logout
+    typolink.parameter = 8
+    typolink.additionalParams = &logintype=logout
+}
+
+[else]
+
+lib.loginout >
+
+[end]

@@ -1,0 +1,6 @@
+lib.header = COA
+lib.header {
+    10 < lib.logolink
+    20 < lib.mainnavigation
+    30 < lib.loginout
+}

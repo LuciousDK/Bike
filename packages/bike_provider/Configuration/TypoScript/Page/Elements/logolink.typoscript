@@ -1,0 +1,6 @@
+lib.logolink = IMAGE
+lib.logolink.file = EXT:bike_provider/Resources/Public/Icons/logo.png
+lib.logolink.stdWrap.typolink {
+    parameter = 1
+    ATagParams = class="m-logolink"
+}
