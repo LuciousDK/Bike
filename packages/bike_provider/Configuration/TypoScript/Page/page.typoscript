@@ -183,3 +183,39 @@ page {
     }
 }
 [end]
+
+page{
+
+    1 = TEXT
+    1 {
+        value = Login
+        typolink.parameter = 8
+    }
+}
+
+[loginUser('*')]
+    page{
+        1 {
+            value = Logout
+            typolink.additionalParams = &logintype=logout
+        }
+    }
+[end]
+
+[loginUser('*') != true && page["uid"] != 8]
+page.config >
+page.config.additionalHeaders.10 {
+    
+    header := getEnv(PROJECT_BASE_URL)
+    header := prependString(Location: )
+    header := appendString(login)
+}
+[end]
+
+[loginUser('*') == true && page["uid"] == 8]
+page.config >
+page.config.additionalHeaders.10 {
+    header := getEnv(PROJECT_BASE_URL)
+    header := prependString(Location: )
+}
+[end]
