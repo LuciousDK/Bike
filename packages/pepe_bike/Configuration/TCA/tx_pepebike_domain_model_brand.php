@@ -16,6 +16,10 @@ return [
             'default' => 'pepe-bike'
         ],
         'searchFields' => 'uid,name',
+        'languageField' => 'sys_language_uid', //current language
+        'transOrigPointerField' => 'l18n_parent', //default language record
+        'transOrigDiffSourceField' => 'l18n_diffsource', //tracks changes on translations
+        'translationSource' => 'l10n_source', //id record was translated from
     ],
     'columns' => [
         'pid' => [
