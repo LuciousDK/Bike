@@ -48,3 +48,8 @@ services:
         iconIdentifier: 'content-widget-rss'
         height: 'large'
         width: 'medium'
+
+  cache.pepebike_mycache:
+    class: TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
+    factory: ['@TYPO3\CMS\Core\Cache\CacheManager', 'getCache']
+    arguments: ['pepebike_mycache']

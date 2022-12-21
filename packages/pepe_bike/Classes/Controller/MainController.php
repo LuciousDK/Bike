@@ -4,11 +4,13 @@ declare (strict_types = 1);
 
 namespace Luat\PepeBike\Controller;
 
+use Luat\PepeBike\Cache\MyCache;
 use Luat\PepeBike\Domain\Model\Bicycle;
 use Luat\PepeBike\Domain\Repository\BicycleRepository;
 use Luat\PepeBike\Domain\Repository\BrandRepository;
 use Luat\PepeBike\Domain\Repository\ClientRepository;
 use Luat\PepeBike\PageTitle\PageTitleProvider;
+use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use TYPO3\CMS\Extbase\Property\PropertyMapper;
@@ -58,10 +60,22 @@ class MainController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     protected $clientRepository;
 
     /**
+     * @var FrontendInterface
+     */
+    protected $cache;
+
+    public function __construct(FrontendInterface $cache)
+    {
+        $this->cache = $cache;
+    }
+
+    /**
      * Init the actions
      */
     public function initializeAction()
     {
+        // $myCache = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Cache\CacheManager::class)->getCache('pepebike_mycache');
+
         if ($this->request->hasArgument('bicycle')) {
             $bicycle = $this->request->getArgument('bicycle');
 

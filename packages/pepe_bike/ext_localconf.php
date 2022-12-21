@@ -35,3 +35,7 @@ $iconRegistry->registerIcon(
     \TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider::class,
     ['source' => 'EXT:pepebike/Resources/Public/Icons/Extension.gif']
 );
+
+
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['pepebike_mycache']
+    ??= [];
