@@ -1,6 +1,8 @@
 lib.header = COA
 lib.header {
+    wrap = <header class="l-header" id="header"><div class="container"><div class="row">|</div></div></header>
     10 < lib.logolink
     20 < lib.mainnavigation
     30 < lib.loginout
+
 }

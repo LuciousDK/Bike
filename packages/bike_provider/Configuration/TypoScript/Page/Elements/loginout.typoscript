@@ -2,6 +2,7 @@ lib.loginout = TEXT
 lib.loginout {
     value = Login
     typolink.parameter = 8
+    wrap = <div class="m-loginout">|</div>
 }
 
 [frontend.user.isLoggedIn]

@@ -2,55 +2,48 @@ lib.mainnavigation = HMENU
 lib.mainnavigation {
     special = directory
     special.value = {$menus.mainNavigation} 
+    wrap = <div class="m-mainnav">|</div>
     1 = TMENU
     1 {
-        wrap = <ul class="m-mainnav__list" role="menubar">|</ul>
-        noBlur = 1
+        wrap = <div class="m-mainnav__list">|</div>
         expAll = 1
 
         NO = 1
         NO {
-            wrapItemAndSub = <li class="m-mainnav__item">|</li>
-            ATagParams = tabindex="0" role="menuitem" class="m-mainnav__link"
-            stdWrap.htmlSpecialChars = 1
+            wrapItemAndSub = <div class="m-mainnav__item">|</div>
+            ATagParams = tabindex="0" class="m-mainnav__link"
+            stdWrap.htmlSpecialChars = 0
             ATagBeforeWrap = 1
             linkWrap = <span>|</span>
         }
 
-        CUR = 1
-        CUR {
-            wrapItemAndSub = <li class="m-mainnav__item is-current">|</li>
-            ATagParams = tabindex="0" role="menuitem" class="m-mainnav__link"
-            ATagBeforeWrap = 1
-            linkWrap = <span>|</span>
-        }
+        ACT < .NO
+        ACT.wrapItemAndSub = <div class="m-mainnav__item is-active">|</div>
 
-        IFSUB = 1
-        IFSUB {
-            wrapItemAndSub = <li class="m-mainnav__item has-child">|</li>
-            ATagParams = tabindex="0" role="menuitem" class="m-mainnav__link"
-            ATagBeforeWrap = 1
-            linkWrap = <span>|</span><span class="m-mainnav__arrow-icon"></span>
-        }
+        CUR < .NO
+        CUR.wrapItemAndSub = <div class="m-mainnav__item is-current">|</div>
+
+        IFSUB < .NO
+        IFSUB.wrapItemAndSub = <div class="m-mainnav__item has-child">|</div>
+        IFSUB.after = <span class="m-mainnav__arrow-icon"></span>
 
         ACTIFSUB <.IFSUB
         ACTIFSUB {
-            wrapItemAndSub = <li class="m-mainnav__item is-active has-child">|</li>
+            wrapItemAndSub = <div class="m-mainnav__item is-active has-child">|</div>
         }
 
         CURIFSUB <.IFSUB
         CURIFSUB {
-            wrapItemAndSub = <li class="m-mainnav__item is-active is-current has-child">|</li>
+            wrapItemAndSub = <div class="m-mainnav__item is-active is-current has-child">|</div>
         }
     }
 
     2 < .1
-    2.wrap = <ul class="m-mainnav__list--level2">|</ul>
-    2.NO.wrapItemAndSub = <li class="m-mainnav__item--level2">|</li>
-    2.NO.ATagParams = tabindex="-1" role="menuitem" class="m-mainnav__link--level2"
-    2.NO.doNotLinkIt = 0
+    2.wrap = <div class="m-mainnav__list--level2">|</div>
+    2.NO.wrapItemAndSub = <div class="m-mainnav__item--level2">|</div>
+    2.NO.ATagParams = tabindex="0" class="m-mainnav__link--level2"
     2.NO.linkWrap >
-    2.CUR.ATagParams = tabindex="0" role="menuitem" class="m-mainnav__link--level2"
-    2.CUR.wrapItemAndSub = <li class="m-mainnav__item--level2 is-current">|</li>
+    2.CUR.ATagParams = tabindex="0" class="m-mainnav__link--level2"
+    2.CUR.wrapItemAndSub = <div class="m-mainnav__item--level2 is-current">|</div>
 
 }
