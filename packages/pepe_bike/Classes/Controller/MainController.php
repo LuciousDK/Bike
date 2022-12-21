@@ -60,16 +60,6 @@ class MainController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     protected $clientRepository;
 
     /**
-     * @var FrontendInterface
-     */
-    protected $cache;
-
-    public function __construct(FrontendInterface $cache)
-    {
-        $this->cache = $cache;
-    }
-
-    /**
      * Init the actions
      */
     public function initializeAction()
