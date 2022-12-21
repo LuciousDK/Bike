@@ -1,13 +1,21 @@
-// Variables
-@import 'custom/variables';
+//Resources (External packages)
+@import 'resources/icons';
+@import 'resources/bootstrap';
 
+//Base
+@import 'base/variables';
+@import 'base/normalize.scss';
 @import 'base/fonts.scss';
 
-@import 'resources/icons';
 
+//Components
+@import 'custom/all';
+
+//Layouts
 @import 'layouts/header';
 @import 'layouts/body';
 @import 'layouts/footer';
 
+//Custom Extensions
 @import 'extensions/bicycle/detail';
 @import 'extensions/bicycle/list';

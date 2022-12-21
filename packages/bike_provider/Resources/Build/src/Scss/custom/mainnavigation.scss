@@ -1,0 +1,31 @@
+.m-mainnav {
+    margin-left: auto;
+    margin-right: 100px;
+}
+
+.m-mainnav__list {
+    display: flex;
+    margin: 0 -20px;
+}
+
+.m-mainnav__item {
+    position: relative;
+    margin: 0 20px;
+}
+
+.m-mainnav__list--level2 {
+
+    position: absolute;
+    top: 100%;
+    left: 0;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: opacity 300ms ease;
+}
+
+.m-mainnav__item:hover .m-mainnav__list--level2 {
+    opacity: 1;
+    height: unset;
+    
+}
