@@ -3,9 +3,9 @@
 @import 'resources/bootstrap';
 
 //Base
+@import 'base/normalize';
 @import 'base/variables';
-@import 'base/normalize.scss';
-@import 'base/fonts.scss';
+@import 'base/fonts';
 
 
 //Components
